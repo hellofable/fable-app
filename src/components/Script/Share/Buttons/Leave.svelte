@@ -3,6 +3,7 @@
   import { _script, _user, _modal, pb, showPopup, _scripts } from "$lib";
   import { onMount } from "svelte";
   let scriptId, userId, token;
+  import { PUBLIC_API } from "$lib/env.js";
 
   async function showConfirm() {
     const result = await showPopup({
@@ -34,7 +35,7 @@
 
   async function leaveShare() {
     try {
-      const response = await fetch("/api/scripts/leaveShare", {
+      const response = await fetch(PUBLIC_API + "/api/scripts/leaveShare", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
