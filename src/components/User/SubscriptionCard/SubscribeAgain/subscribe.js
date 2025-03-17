@@ -1,7 +1,8 @@
 import {
 	PUBLIC_APP,
 	PUBLIC_STRIPE_PRICE_YEARLY,
-	PUBLIC_STRIPE_PRICE_MONTHLY
+	PUBLIC_STRIPE_PRICE_MONTHLY,
+	PUBLIC_API
 } from '$lib/env.js'
 
 async function getPlan(email) {
@@ -30,7 +31,7 @@ async function initiateCheckout({ email, plan }) {
 	try {
 		const returnUrl = PUBLIC_APP;
 
-		const response = await fetch('/api/stripe/create-checkout-session', {
+		const response = await fetch(PUBLIC_API + '/api/stripe/create-checkout-session', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'

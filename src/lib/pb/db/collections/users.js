@@ -1,5 +1,6 @@
 import { pb, _user } from "$lib"
 import _ from 'lodash';
+import { PUBLIC_API } from "$lib/env.js";
 
 
 
@@ -7,7 +8,7 @@ import _ from 'lodash';
 async function insert(data) {
     try {
         const token = pb.authStore.token;
-        const response = await fetch('/api/users/insert', {
+        const response = await fetch(PUBLIC_API + '/api/users/insert', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -34,7 +35,7 @@ async function insert(data) {
 async function remove(docId) {
     try {
         const token = pb.authStore.token;
-        const response = await fetch('/api/users/delete', {
+        const response = await fetch(PUBLIC_API + '/api/users/delete', {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -61,7 +62,7 @@ async function remove(docId) {
 async function update(id, updatedFields) {
     try {
         const token = pb.authStore.token;
-        const response = await fetch('/api/users/update', {
+        const response = await fetch(PUBLIC_API + '/api/users/update', {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',

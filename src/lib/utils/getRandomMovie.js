@@ -1,5 +1,5 @@
 export async function getRandomMovie() {
-    const response = await fetch('/api/movie');
+    const response = await fetch(PUBLIC_API + '/api/movie');
 
 
     const data = await response.json();

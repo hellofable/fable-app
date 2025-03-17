@@ -1,7 +1,8 @@
 import PocketBase from 'pocketbase';
 
 
-import { PUBLIC_PB_CHECKPOINTS } from '$lib/env.js'
+import { PUBLIC_PB_CHECKPOINTS, PUBLIC_API } from '$lib/env.js'
+
 
 const db = new PocketBase(PUBLIC_PB_CHECKPOINTS);
 window.pb_checkpoints = pb;
@@ -28,7 +29,7 @@ async function removeCheckpoint({ docId }) {
 	}
 
 	try {
-		const response = await fetch('/api/deleteCheckpoint', {
+		const response = await fetch(PUBLIC_API + '/api/deleteCheckpoint', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -60,7 +61,7 @@ async function get({ docId }) {
 	}
 
 	try {
-		const response = await fetch('/api/checkpoints/get', {
+		const response = await fetch(PUBLIC_API + '/api/checkpoints/get', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',

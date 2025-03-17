@@ -1,4 +1,5 @@
 import { pb } from "$lib"
+import { PUBLIC_API } from "$lib/env.js";
 
 
 
@@ -7,7 +8,7 @@ import { pb } from "$lib"
 async function insert(data) {
     const token = pb.authStore.token;
 
-    const response = await fetch('/api/folders/insert', {
+    const response = await fetch(PUBLIC_API + '/api/folders/insert', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -41,7 +42,7 @@ async function get() {
 async function remove(docId) {
     try {
         const token = pb.authStore.token;
-        const response = await fetch('/api/folders/delete', {
+        const response = await fetch(PUBLIC_API + '/api/folders/delete', {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -68,7 +69,7 @@ async function remove(docId) {
 async function update(id, updatedFields) {
     const token = pb.authStore.token;
 
-    const response = await fetch('/api/folders/update', {
+    const response = await fetch(PUBLIC_API + '/api/folders/update', {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',

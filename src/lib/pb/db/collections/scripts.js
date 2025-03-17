@@ -1,10 +1,11 @@
 import { pb, _user } from "$lib"
+import { PUBLIC_API } from "$lib/env.js";
 
 
 async function insert(data) {
     try {
         const token = pb.authStore.token;
-        const response = await fetch('/api/scripts/insert', {
+        const response = await fetch(PUBLIC_API + '/api/scripts/insert', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -39,7 +40,7 @@ async function get() {
 async function update(id, updatedFields) {
     try {
         const token = pb.authStore.token;
-        const response = await fetch('/api/scripts/update', {
+        const response = await fetch(PUBLIC_API + '/api/scripts/update', {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -65,7 +66,7 @@ async function update(id, updatedFields) {
 async function remove(docId) {
     try {
         const token = pb.authStore.token;
-        const response = await fetch('/api/scripts/delete', {
+        const response = await fetch(PUBLIC_API + '/api/scripts/delete', {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -112,7 +113,7 @@ async function addShare({ scriptId, email }) {
     }
 
     try {
-        const response = await fetch('/api/scripts/addShare', {
+        const response = await fetch(PUBLIC_API + '/api/scripts/addShare', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

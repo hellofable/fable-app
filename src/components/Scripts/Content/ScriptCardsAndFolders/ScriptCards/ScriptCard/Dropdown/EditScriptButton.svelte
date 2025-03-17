@@ -8,6 +8,8 @@
   export let script;
 
   function clickEdit(event) {
+    event.stopPropagation();
+    event.preventDefault();
     _modal.open(Form, {
       title: "New Script",
       buttons: {
