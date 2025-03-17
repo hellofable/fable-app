@@ -4,6 +4,7 @@
 export const PUBLIC_APP = "https://app.hellofable.com";
 export const PUBLIC_LANDING = "https://hellofable.com";
 export const PUBLIC_AI = "https://ai.hellofable.com";
+// export const PUBLIC_API = "https://api-dev.hellofable.com";
 export const PUBLIC_API = "https://api.hellofable.com";
 
 export const PUBLIC_PB = "https://pb.hellofable.com";

@@ -41,13 +41,16 @@
     try {
       const returnUrl = PUBLIC_APP;
 
-      const response = await fetch("/api/stripe/createCheckoutSession", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ priceId, email, returnUrl, customerId }),
-      });
+      const response = await fetch(
+        PUBLIC_API + "/api/stripe/createCheckoutSession",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ priceId, email, returnUrl, customerId }),
+        }
+      );
 
       if (!response.ok) {
         const errorData = await response.json();

@@ -9,7 +9,7 @@
     const token = pb.authStore.token;
     try {
       // Make a POST request to the endpoint we defined
-      const response = await fetch("/api/stripe/createPortal", {
+      const response = await fetch(PUBLIC_API + "/api/stripe/createPortal", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
