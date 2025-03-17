@@ -1,6 +1,5 @@
 <script>
   import { Route } from "tinro";
-  import "./scss/index.scss";
 
   import Init from "./init/Init.svelte";
 

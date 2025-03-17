@@ -1,14 +1,13 @@
 <script>
   import { onMount } from "svelte";
-
-  import { meta, router, Route } from "tinro";
-  const route = meta();
+  import { _route } from "$lib";
+  import { router, Route } from "tinro";
 
   import Script from "../pages/Script.svelte";
   import Scripts from "../pages/Scripts.svelte";
 
   onMount(() => {
-    if ($route.url == "/") {
+    if ($_route.url == "/") {
       router.goto("/scripts");
     }
   });

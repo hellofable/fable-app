@@ -1,8 +1,9 @@
 <script>
-  import "../scss/index.scss";
   import { onMount } from "svelte";
   import { meta, router, Route } from "tinro";
+  import { _route } from "$lib";
   const route = meta();
+  import "../scss/index.scss";
 
   import Otp from "../components/User/Otp.svelte";
 
@@ -30,6 +31,7 @@
   });
 
   $: setPageTitle($route.url);
+  $: $_route = $route;
 </script>
 
 {#if $_user?.id}

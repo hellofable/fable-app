@@ -25,6 +25,8 @@ export { _checkpointsMeta } from './stores/_checkpointsMeta';
 export { _script } from './stores/_script';
 export { _stripe } from './stores/_stripe';
 export { _popup } from './stores/_popup';
+export { _route } from "./stores/_route";
+
 
 // //utils
 export { toast } from './utils/toast';

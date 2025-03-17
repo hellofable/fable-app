@@ -1,6 +1,7 @@
 import { pb } from './pb';
+import { _user, _app, _stripe, _scripts, _folders, _script, _route } from '$lib';
 
-import { _user, _app, _stripe, _scripts, _folders, _script } from '$lib';
+
 
 
 import { PUBLIC_LANDING } from '$lib/env.js'
@@ -108,16 +109,23 @@ async function subRealtime(user) {
 		// Subscribe to all scripts
 		await pb.collection('scripts').unsubscribe();
 
+
 		await pb.collection('scripts').subscribe('*', async (e) => {
 			const records = await pb.db.scripts.get();
 			_scripts.set(records);
 
-			console.log(records);
 
-			// Check if the action is 'update' and the record ID matches the scriptId in the page params
-			// if (e.action === 'update' && e.record.id === get(page).params.scriptId) {
-			// 	_script.set(e.record);
-			// }
+			const urlPath = window.location.pathname;
+
+			// Extract the scriptId from the URL (assuming format: "/script/{scriptId}")
+			const scriptId = urlPath.split("/")[2]; // Adjust the index if needed
+
+			// Check if the action is 'update' and the record ID matches the extracted scriptId
+			if (e.action === 'update' && e.record.id === scriptId) {
+				_script.set(e.record);
+			}
+
+
 		});
 	} catch (error) {
 		console.error('Error fetching scripts :', error);

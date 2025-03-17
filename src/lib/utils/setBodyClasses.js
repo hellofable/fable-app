@@ -73,22 +73,15 @@ export const setBodyClasses = () => {
 
 
 export const setPageTitle = (url) => {
-
-
-
-	const path = url.split('/')[1];
+	const path = url.split('/')[1]?.split('?')[0]; // Remove query parameters
 
 	if (!path) return;
+
 	// Remove all classes starting with "page-"
 	document.body.classList.forEach((cls) => {
 		if (cls.startsWith('page-')) document.body.classList.remove(cls);
 	});
 
 	// Add the new class based on the current path
-	if (path) {
-		document.body.classList.add(`page-${path}`);
-	}
-
-
-
-}
+	document.body.classList.add(`page-${path}`);
+};
