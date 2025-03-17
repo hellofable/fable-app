@@ -1,0 +1,99 @@
+body.page-script {
+
+
+
+	cardgrid {
+
+		.node-card {
+			position: relative;
+		}
+
+
+
+		/* First-level cardgrid should not have margin-left or width adjustment */
+		.cardgrid:first-of-type {
+			margin-left: 0;
+			width: 100%;
+		}
+
+		/* Nested cardgrids should retain margin and width adjustment */
+		.cardgrid .cardgrid {
+			margin-left: 20px;
+			width: calc(100% - 20px);
+		}
+
+
+
+		gap: 5px;
+
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+		/* Responsive grid */
+
+		.fable-card {
+			border-radius: 7px;
+			padding: 10px;
+			border: 1px dashed rgb(187, 187, 187);
+
+			&.is-section {
+				border: 0;
+			}
+
+			&.selected-card.is-not-section {
+				border-left: 1px solid rgba(0, 0, 0, 0);
+			}
+		}
+	}
+}
+
+body.page-script.view-script .fable-card,
+body.page-script.view-cards .fable-card.is-section {
+	height: auto;
+}
+
+body.page-script.view-cards .fable-card {
+	height: 200px;
+}
+
+body.page-script.view-script .node-card {
+	grid-column: 1 / -1;
+}
+
+.node-card:first-child:has(.fable-card.is-section) {
+	grid-column: 1 / -1;
+}
+
+cardgrid {
+	grid-column: 1 / -1;
+}
+
+cardgrid .node-card:has(.fable-card.collapsed) .line:nth-child(n + 2) {
+	display: none;
+}
+
+cardgrid>.node-card:first-child:has(.fable-card.collapsed)~.node-card {
+	display: none;
+}
+
+cardgrid>.node-card:first-child:has(.fable-card.collapsed)~cardgrid {
+	display: none;
+}
+
+
+
+
+
+
+
+/* Nested cardgrids should retain margin and width adjustment */
+cardgrid {
+	margin-left: 20px;
+	width: calc(100% - 20px);
+}
+
+
+.ProseMirror>cardgrid {
+	margin-top: 5px;
+	margin-left: 0;
+	width: calc(100%);
+}

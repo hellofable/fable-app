@@ -1,0 +1,223 @@
+.script-card {
+	::-webkit-scrollbar {
+		width: 5px;
+	}
+}
+
+html,
+body,
+#app {
+	height: 100%;
+	font-family:
+		system-ui,
+		-apple-system,
+		BlinkMacSystemFont,
+		'Segoe UI',
+		Roboto,
+		Oxygen,
+		Ubuntu,
+		Cantarell,
+		'Open Sans',
+		'Helvetica Neue',
+		sans-serif;
+}
+
+/* Flash Animation */
+.flash-line {
+	animation: flashInnerGlow 0.7s ease-in-out forwards;
+	border-radius: 4px;
+	box-shadow:
+		0 0 10px rgba(255, 255, 255, 0.6) inset,
+		0 0 50px rgba(255, 255, 255, 0.8);
+}
+
+/* Notes */
+.fable-note.color {
+	&.red {
+		background: red;
+	}
+
+	&.blue {
+		background: blue;
+	}
+
+	&.green {
+		background: green;
+	}
+
+	&.yellow {
+		background: yellow;
+	}
+
+	&.orange {
+		background: orange;
+	}
+
+	&.purple {
+		background: purple;
+	}
+
+	&.pink {
+		background: pink;
+	}
+
+	&.brown {
+		background: brown;
+	}
+}
+
+/* Utility Classes */
+.no-select {
+	user-select: none;
+}
+
+button,
+button:focus,
+button:active,
+button:focus-visible {
+	border: none !important;
+	box-shadow: none !important;
+	outline: none !important;
+}
+
+/* Sidebar */
+.sidecard .sidecard-inner.selected,
+.fable-card.selected-card {
+	box-shadow: inset 3px 0 0 0 rgb(56, 233, 56);
+}
+
+/* Color Variables */
+:root {
+	--grey-010: #fafafa;
+	--grey-020: #f5f5f5;
+	--grey-030: #f0f0f0;
+	--grey-040: #ebebeb;
+	--grey-050: #e6e6e6;
+	--grey-060: #e1e1e1;
+	--grey-070: #dcdcdc;
+	--grey-080: #d7d7d7;
+	--grey-090: #d2d2d2;
+	--grey-100: #cdcdcd;
+	--grey-110: #c8c8c8;
+	--grey-120: #c3c3c3;
+	--grey-130: #bebebe;
+	--grey-140: #b9b9b9;
+	--grey-150: #b4b4b4;
+	--grey-160: #afafaf;
+	--grey-170: #aaaaaa;
+	--grey-180: #a5a5a5;
+	--grey-190: #a0a0a0;
+	--grey-200: #9b9b9b;
+	--grey-210: #969696;
+	--grey-220: #919191;
+	--grey-230: #8c8c8c;
+	--grey-240: #878787;
+	--grey-250: #828282;
+	--grey-260: #7d7d7d;
+	--grey-270: #787878;
+	--grey-280: #737373;
+	--grey-290: #6e6e6e;
+	--grey-300: #696969;
+	--grey-310: #646464;
+	--grey-320: #5f5f5f;
+	--grey-330: #5a5a5a;
+	--grey-340: #555555;
+	--grey-350: #505050;
+	--grey-360: #4b4b4b;
+	--grey-370: #464646;
+	--grey-380: #414141;
+	--grey-390: #3c3c3c;
+	--grey-400: #373737;
+	--grey-410: #323232;
+	--grey-420: #2d2d2d;
+	--grey-430: #282828;
+	--grey-440: #232323;
+	--grey-450: #1e1e1e;
+	--grey-460: #191919;
+	--grey-470: #141414;
+	--grey-480: #0f0f0f;
+	--grey-490: #0a0a0a;
+}
+
+.script-card,
+.folder-card {
+	height: 150px;
+
+	button {
+		color: grey;
+	}
+
+	button:hover {
+		color: rgb(100, 100, 100);
+	}
+}
+
+/* Base styling */
+.script-card {
+	cursor: pointer;
+	grid-column: span 1;
+	/* Spans the entire width */
+}
+
+.folder-card {
+	cursor: pointer;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	grid-column: span 1;
+}
+
+/* Light Mode */
+:root {
+	--btn-secondary-bg: #e7e7e7;
+	--btn-secondary-text: #3a3a3a;
+	--btn-secondary-hover-bg: #cccccc;
+	/* Darker background for hover in light mode */
+}
+
+[data-lastpass-icon-root] {
+	display: none;
+}
+
+[data-lastpass-root] {
+	display: none;
+}
+
+.span-all {
+	grid-column: 1 / -1;
+}
+
+.breadcrumb-item.active {
+	color: unset;
+}
+
+.btn-link {
+	text-decoration: none;
+}
+
+.popover-arrow {
+	display: none !important;
+}
+
+body.page-scripts {
+	.toolbar {
+		padding: 7px;
+	}
+}
+
+body.page-script {
+	.toolbar {
+		padding: 7px;
+	}
+}
+
+/* When visible, slide into view */
+.story-builder.visible {
+	transform: translateX(0%) !important;
+}
+
+
+.submit-button {
+	min-width: 80px;
+}

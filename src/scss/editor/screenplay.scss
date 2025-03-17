@@ -1,0 +1,37 @@
+/* Scene Elements */
+.line {
+	display: block;
+}
+
+scene {
+	font-weight: bold;
+}
+
+char {
+	margin-left: 20px;
+}
+
+dia {
+	max-width: 70%;
+}
+
+.modifier {
+	opacity: 0.5;
+}
+
+.fable-note,
+.modifier-note {
+	background: rgba(255, 255, 0, 0.1);
+}
+
+.modifier-note {
+	color: rgba(0, 0, 0, 0.115);
+}
+
+body.page-script {
+	.synopsis::before {
+		content: 'synopsis ';
+		font-weight: bold;
+		opacity: 0.3;
+	}
+}

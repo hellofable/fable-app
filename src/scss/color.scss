@@ -1,0 +1,188 @@
+// Variables for script card
+
+$script-card-bg-light: var(--grey-010);
+$script-card-hover-light: var(--grey-040);
+// dark
+$script-card-bg-dark: rgb(15, 15, 15);
+$script-card-hover-dark: rgb(20, 20, 20);
+
+// Variables for folder card
+$folder-card-bg-light: var(--grey-020);
+$folder-card-hover-light: var(--grey-040);
+// dark
+$folder-card-bg-dark: rgb(16, 16, 16);
+$folder-card-hover-dark: rgba($folder-card-bg-dark, 0.8);
+
+// Variables for toolbar
+$scripts-toolbar-bg-light: var(--grey-020);
+$scripts-toolbar-bg-dark: var(--grey-450);
+
+$script-toolbar-bg-light: var(--grey-020);
+$script-toolbar-bg-dark: var(--grey-450);
+
+// Variables for breadcrumbs
+$breadcrumbs-bg-light: var(--grey-030);
+$breadcrumbs-bg-dark: var(--grey-470);
+
+// Variables for trashcards
+$trash-card-bg-light: #d7d7d7;
+$trash-card-bg-dark: black;
+
+// Variables for toolbar buttons card
+$folder-toolbar-button-bg-light: var(--grey-080);
+$folder-toolbar-button-hover-light: var(--grey-120);
+// dark
+$folder-toolbar-button-bg-dark: var(--grey-430);
+$folder-toolbar-button-hover-dark: var(--grey-400);
+
+// Variables for script sidebar
+$script-sidebar-bg-light: var(--grey-020);
+$script-sidebar-bg-dark: #101010;
+
+// Fable Cards
+$fable-card-light: var(--grey-010);
+$fable-card-dark: var(--grey-480);
+
+// Variables for trashcards
+$vault-options-light: white;
+$vault-options-dark: var(--grey-400);
+
+body {
+	background: white;
+
+	[data-bs-theme='dark'] & {
+		background: black;
+	}
+}
+
+// .line.has-focus {
+// 	background: rgb(240, 240, 240);
+
+// 	[data-bs-theme='dark'] & {
+// 		background: rgb(30, 30, 30);
+// 	}
+// }
+
+.logo {
+
+	// opacity: 0.08;
+	[data-bs-theme='dark'] & {
+		opacity: 0.3;
+		filter: invert(1);
+	}
+}
+
+body.page-scripts {
+	.vault-card {
+		.card-header {
+			background: #ececec;
+
+			[data-bs-theme='dark'] & {
+				background: #292929;
+			}
+		}
+	}
+
+	.toolbar {
+		background: $scripts-toolbar-bg-light;
+
+		[data-bs-theme='dark'] & {
+			background: $scripts-toolbar-bg-dark;
+		}
+	}
+
+	.scripts-sidebar {
+		background: $script-sidebar-bg-light;
+
+		[data-bs-theme='dark'] & {
+			background: black;
+		}
+	}
+
+	.script-card {
+		background: $script-card-bg-light;
+
+		&:hover {
+			background: $script-card-hover-light;
+		}
+
+		[data-bs-theme='dark'] & {
+			background: $script-card-bg-dark;
+
+			&:hover {
+				background: $script-card-hover-dark;
+			}
+		}
+	}
+
+	.folder-card {
+		background: $folder-card-bg-light;
+
+		&:hover {
+			background: $folder-card-hover-light;
+		}
+
+		[data-bs-theme='dark'] & {
+			background: $folder-card-bg-dark;
+
+			&:hover {
+				background: $folder-card-hover-dark;
+			}
+		}
+	}
+
+	.trash-card {
+		background: $trash-card-bg-light;
+		border-radius: 7px;
+
+		[data-bs-theme='dark'] & {
+			background: $trash-card-bg-dark;
+		}
+	}
+
+	.breadcrumbs {
+		background: $breadcrumbs-bg-light;
+
+		[data-bs-theme='dark'] & {
+			background: $breadcrumbs-bg-dark;
+		}
+	}
+
+	.vault-options {
+		background: $vault-options-light;
+
+		[data-bs-theme='dark'] & {
+			background: $vault-options-dark;
+		}
+	}
+}
+
+body.page-script {
+	.script-sidebar {
+		background: $script-sidebar-bg-light;
+
+		[data-bs-theme='dark'] & {
+			background: $script-sidebar-bg-dark;
+		}
+
+		.sidecard {
+			.sidecard-inner {
+				[data-bs-theme='dark'] & {
+					background: var(--grey-450);
+				}
+
+				[data-bs-theme='light'] & {
+					background: white;
+				}
+			}
+		}
+	}
+
+	.fable-card {
+		background: $fable-card-light;
+
+		[data-bs-theme='dark'] & {
+			background: $fable-card-dark;
+		}
+	}
+}
