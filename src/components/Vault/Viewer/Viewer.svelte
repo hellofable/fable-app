@@ -61,7 +61,7 @@
         </div>
       </div>
       <div class="text-end mt-2">
-        <RestoreRevision backup={checkpoint} {script} />
+        <RestoreRevision backup={checkpoint} {script} {file} />
         <DeleteRevision backup={checkpoint} />
       </div>
     </div>

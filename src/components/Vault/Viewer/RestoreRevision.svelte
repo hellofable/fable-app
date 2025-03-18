@@ -5,6 +5,7 @@
   import { showPopup, pb } from "$lib";
   export let backup;
   export let script;
+  export let file;
 
   async function restore() {
     console.log(backup);
@@ -23,8 +24,10 @@
         title: $script.title + " (restored)",
         synopsis: $script.synopsis || "",
         folderId: $route.params.folderId || "root",
-        importJson: backup.file,
+        importJson: file,
       };
+
+      console.log(fields);
 
       const res = await pb.db.scripts.insert(fields);
 
