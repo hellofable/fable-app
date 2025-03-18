@@ -1,6 +1,5 @@
 <script>
-  import { goto } from "$app/navigation";
-  import { meta } from "tinro";
+  import { meta, router } from "tinro";
   const route = meta();
 
   import { showPopup, pb } from "$lib";
