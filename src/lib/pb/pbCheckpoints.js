@@ -5,7 +5,6 @@ import { PUBLIC_PB_CHECKPOINTS, PUBLIC_API } from '$lib/env.js'
 
 
 const db = new PocketBase(PUBLIC_PB_CHECKPOINTS);
-window.pb_checkpoints = pb;
 
 async function getBackups(scriptId, page, limit) {
 	try {
@@ -29,6 +28,8 @@ async function removeCheckpoint({ docId }) {
 	}
 
 	try {
+		console.log("delete checkpoint", docId);
+
 		const response = await fetch(PUBLIC_API + '/api/checkpoints/delete', {
 			method: 'POST',
 			headers: {
@@ -40,7 +41,8 @@ async function removeCheckpoint({ docId }) {
 
 		const result = await response.json();
 
-		if (!response.ok) {
+
+		if (!result.success) {
 			throw new Error(result.message || 'Failed to share script');
 		}
 
