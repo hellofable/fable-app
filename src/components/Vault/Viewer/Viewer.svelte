@@ -3,8 +3,8 @@
   import { _app, pbCheckpoints, dateFormat, timeAgo, _route } from "$lib";
   import { _scripts } from "$lib";
 
-  // import RestoreRevision from './RestoreRevision.svelte';
-  // import DeleteRevision from './DeleteRevision.svelte';
+  import RestoreRevision from "./RestoreRevision.svelte";
+  import DeleteRevision from "./DeleteRevision.svelte";
   import Close from "./Close.svelte";
   import Editor from "./Editor/Editor.svelte";
 
@@ -61,8 +61,8 @@
         </div>
       </div>
       <div class="text-end mt-2">
-        <!-- <RestoreRevision backup={checkpoint} {script} /> -->
-        <!-- <DeleteRevision backup={checkpoint} /> -->
+        <RestoreRevision backup={checkpoint} {script} />
+        <DeleteRevision backup={checkpoint} />
       </div>
     </div>
 
