@@ -2,6 +2,7 @@
   import { derived, writable } from "svelte/store";
   import { _app, pbCheckpoints, dateFormat, timeAgo, _route } from "$lib";
   import { _scripts } from "$lib";
+  import LoadingSpinner from "/src/components/Other/IsAuthenticatingSpinner.svelte";
 
   import RestoreRevision from "./RestoreRevision.svelte";
   import DeleteRevision from "./DeleteRevision.svelte";
@@ -11,7 +12,6 @@
   // Writable store for checkpoint data
   const checkpoint = writable(null);
   let file = "";
-  let hidden = true;
 
   // Fetch checkpoint data when _app.backupId changes
   $: if ($_route.query.backupId) {
@@ -26,10 +26,10 @@
         checkpoint.set(response.data.checkpoint);
         file = response.data.file;
 
-        hidden = true;
+        $_app.isLoadingBackup = true;
         setTimeout(() => {
-          hidden = false;
-        }, 100);
+          $_app.isLoadingBackup = false;
+        }, 1000);
       }
     } catch (error) {
       console.error("Error fetching checkpoint:", error);
@@ -47,7 +47,12 @@
   class:d-none={!$_route.query.backupId}
   class="viewer shadow d-flex flex-column scroller"
 >
-  {#if checkpoint && file && !hidden}
+  {#if $_app.isLoadingBackup}
+    <div class="loading-container">
+      <LoadingSpinner />
+    </div>
+  {/if}
+  {#if checkpoint && file && !$_app.isLoadingBackup}
     <div class="viewer-header p-3 rounded">
       <div class="d-flex w-100">
         <div class="close">
@@ -75,7 +80,7 @@
 <style>
   .viewer {
     top: 0;
-    position: fixed;
+    position: absolute;
     right: 0;
     width: 500px;
     max-width: 100%;
@@ -94,5 +99,17 @@
 
   .viewer-header {
     background: rgba(128, 128, 128, 0.059);
+  }
+
+  .loading-container {
+    width: 500px;
+    position: fixed;
+    right: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(var(--bs-body-bg-rgb), 0.8);
+    z-index: 50; /* Ensure it's on top */
   }
 </style>

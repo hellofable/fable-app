@@ -8,8 +8,6 @@
   export let file;
 
   async function restore() {
-    console.log(backup);
-
     const popup = await showPopup({
       title: "Restore this document?",
       bodyMessage:
@@ -27,10 +25,8 @@
         importJson: file,
       };
 
-      console.log(fields);
-
       const res = await pb.db.scripts.insert(fields);
-
+      console.log(res);
       router.goto("/scripts");
       popup.popup.hide();
     }
@@ -39,8 +35,14 @@
 
 <a
   on:click={restore}
-  href=""
+  href={null}
   class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover small"
 >
   Restore Revision
 </a>
+
+<style>
+  a {
+    cursor: pointer;
+  }
+</style>

@@ -3,7 +3,8 @@ import { _cards, logTimer, establishCardsHierarchy, debounce } from '$lib';
 
 export const createCards = debounce(createCardsDebounced, 500);
 async function createCardsDebounced() {
-	// console.log('create cards');
+	// return
+	console.log('create cards');
 
 	// Starts a timer for performance tracking; ensure logTimer is properly defined.
 	// logTimer.start('createCards', true);
@@ -123,6 +124,7 @@ async function createCardsDebounced() {
 	for (let i = 0; i < nodes.length; i += chunkSize) {
 		// console.log("Processing chunk", i, "to", Math.min(i + chunkSize, nodes.length)); // Debugging log.
 		await processChunk(i, Math.min(i + chunkSize, nodes.length));
+		await new Promise((resolve) => setTimeout(resolve, 0)); // Prevents blocking the event loop.
 	}
 
 	// Updates the global card store with the newly processed cards.

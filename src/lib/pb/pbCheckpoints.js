@@ -29,7 +29,7 @@ async function removeCheckpoint({ docId }) {
 	}
 
 	try {
-		const response = await fetch(PUBLIC_API + '/api/deleteCheckpoint', {
+		const response = await fetch(PUBLIC_API + '/api/checkpoints/delete', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
