@@ -52,7 +52,7 @@
       <LoadingSpinner />
     </div>
   {/if}
-  {#if checkpoint && file && !$_app.isLoadingBackup}
+  {#if $checkpoint?.id && file && !$_app.isLoadingBackup}
     <div class="viewer-header p-3 rounded">
       <div class="d-flex w-100">
         <div class="close">
@@ -61,8 +61,8 @@
 
         <div class="text-end flex-grow-1">
           <div class="text-secondary fw-bold fs-4">{$script.title}</div>
-          <div class=" fw-x">{dateFormat(checkpoint.created)}</div>
-          <div class="small text-muted">{timeAgo(checkpoint.created)}</div>
+          <div class=" fw-x">{dateFormat($checkpoint.created)}</div>
+          <div class="small text-muted">{timeAgo($checkpoint.created)}</div>
         </div>
       </div>
       <div class="text-end mt-2">

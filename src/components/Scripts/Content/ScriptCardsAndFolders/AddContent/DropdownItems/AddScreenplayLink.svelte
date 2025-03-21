@@ -1,5 +1,6 @@
 <script>
   import { meta } from "tinro";
+  import fableFourAct from "/src/assets/maps/fableFourAct.txt?raw";
   const route = meta();
 
   import { _modal, pb, _user } from "$lib";
@@ -29,6 +30,26 @@
             placeholder: "Enter script synopsis",
             required: true,
           },
+          {
+            id: "template",
+            name: "template",
+            type: "select",
+            showLabel: false,
+            required: true,
+            defaultValue: "none",
+            options: [
+              {
+                value: "none",
+                label: "No Template",
+                helperText: "Start with just a blank script.",
+              },
+              {
+                value: "fableFourAct",
+                label: "Fable Four Act",
+                helperText: `Follows a timeless four-act structure—Setup, Initiation, Crisis, and Resolution—with a fresh take on character transformation. It balances external trials, internal growth, and a B-Story that enriches the narrative.`,
+              },
+            ],
+          },
         ],
 
         onSubmit: async (data) => {
@@ -39,9 +60,12 @@
             synopsis: data.synopsis || "",
           };
 
+          if (data.template === "fableFourAct") {
+            fields.import = fableFourAct;
+          }
+
           // save the script
           const res = await pb.db.scripts.insert(fields);
-          console.log(res);
 
           // update the user script counter & close the modal
           if (res?.success) _modal.close();
@@ -51,4 +75,4 @@
   }
 </script>
 
-<a class="dropdown-item" on:click={clickAdd} href=""> Screenplay </a>
+<a class="dropdown-item" on:click={clickAdd} href={null}> Screenplay </a>

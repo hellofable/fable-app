@@ -4,12 +4,13 @@
 
   let scriptsSorted = [];
 
-  $: if ($_scripts) {
+  $: if ($_scripts && $_scripts.sort) {
     scriptsSorted = $_scripts.sort((a, b) => b.scriptNumber - a.scriptNumber);
   }
 
   // import VaultOptions from './VaultOptions/VaultOptions.svelte';
   import VaultCard from "./VaultCard/VaultCard.svelte";
+  import { scripts } from "$lib/pb/db/collections";
 </script>
 
 <div

@@ -1,4 +1,4 @@
-import { pb, _user } from "$lib"
+import { pb, _user, addSectionsToScriptText } from "$lib"
 import { PUBLIC_API } from "$lib/env.js";
 
 
@@ -90,6 +90,10 @@ async function remove(docId) {
 }
 
 async function importFromText(filename, fileContents) {
+
+
+    // addSectionsToScriptText(fileContents);
+    // return
 
     const fixedTitle = filename.split('.')[0] + ' (imported)';
 

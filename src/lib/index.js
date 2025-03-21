@@ -40,6 +40,7 @@ export { timeAgo, dateFormat } from './utils/timeAgo';
 export { showPopup } from './utils/showPopup';
 export { setAppSettingsFromLocal } from './utils/setAppSettingsFromLocal';
 export { listenForIframeMessages } from './utils/listenForIframeMessages';
+export { addSectionsToScriptText } from "./utils/addSectionsToScriptText"
 
 // //stripe
 

@@ -1,67 +1,81 @@
 <script>
   import { meta } from "tinro";
+  import { addSectionsToScriptText } from "$lib";
+
   const route = meta();
 
-  import { pb } from "$lib";
-  let fileInput;
+  import { _modal, pb, _user } from "$lib";
+  import Form from "/src/components/Other/Form.svelte";
 
-  function handleFileChange(event) {
-    const file = event.target.files[0];
+  function clickAdd(event) {
+    _modal.open(Form, {
+      title: "Import Text",
+      buttons: {
+        submit: {
+          title: "Import",
+          class: "btn-primary",
+          showLabel: false,
+        },
+      },
+      componentProps: {
+        fields: [
+          {
+            name: "scriptFile",
+            id: "script-file",
+            type: "file",
+            required: true,
+            showLabel: false,
+          },
+          {
+            id: "template",
+            name: "template",
+            type: "select",
+            showLabel: false,
+            required: true,
+            defaultValue: "none",
+            options: [
+              {
+                value: "none",
+                label: "No Template",
+                helperText: "Do not apply a template to this script.",
+              },
+              {
+                value: "fableFourAct",
+                label: "Fable Four Act",
+                helperText: `Follows a timeless four-act structure—Setup, Initiation, Crisis, and Resolution—with a fresh take on character transformation. It balances external trials, internal growth, and a B-Story that enriches the narrative.`,
+              },
+            ],
+          },
+        ],
 
-    if (!file) {
-      console.log("No file selected");
-      return;
-    }
+        onSubmit: async (data) => {
+          $_modal.isSubmitting = true;
 
-    const reader = new FileReader();
+          if (!data.scriptFile) {
+            _modal.close();
+            return;
+          }
 
-    reader.onload = async () => {
-      try {
-        const fileContents = reader.result; // File's text content
-        const filename = file.name; // Use the file name as the script title
+          if (data.template == "none") {
+            // Call the import function
+            const res = await pb.db.scripts.importFromText(
+              data.scriptFile.filename,
+              data.scriptFile.content
+            );
+            if (res?.success) _modal.close();
+          }
 
-        // Call the import function
-        const response = await pb.db.scripts.importFromText(
-          filename,
-          fileContents
-        );
-
-        //  error handling based on response structure
-        if (response && response.success) {
-          console.log("Script imported successfully:", response.res);
-        } else {
-          console.error("Script import failed:", response);
-          alert(
-            "Failed to import script. Please check the file and try again."
-          );
-        }
-      } catch (error) {
-        console.error("Error importing script:", error);
-        alert("An unexpected error occurred while importing the script.");
-      }
-    };
-
-    reader.onerror = () => {
-      console.error("Error reading file:", reader.error);
-      alert("Error reading the file. Please try again.");
-    };
-
-    reader.readAsText(file);
-  }
-
-  function openFileChooser() {
-    fileInput.click(); // Trigger the file input element programmatically
+          if (data.template != "none") {
+            addSectionsToScriptText({
+              scriptText: data.scriptFile.content,
+              templateName: data.template,
+            });
+            _modal.close();
+          }
+        },
+      },
+    });
   }
 </script>
 
-<a class="dropdown-item" on:click={openFileChooser} href=""
-  >Import From Text
-</a>
-
-<input
-  bind:this={fileInput}
-  type="file"
-  accept=".txt, .fountain"
-  style="display: none;"
-  on:change={handleFileChange}
-/>
+<a class="dropdown-item" on:click={clickAdd} href={null}> Import Text </a>

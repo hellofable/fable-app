@@ -1,7 +1,5 @@
-import { _editor } from '$lib';
+import { _editor, debounce } from '$lib';
 
-import { debounce } from '$lib';
-import { DOMParser as ProseMirrorDOMParser } from 'prosemirror-model';
 
 export function convertTextToHtmlCardsOnly(scriptText) {
 	const cards = splitTextIntoCards(scriptText);

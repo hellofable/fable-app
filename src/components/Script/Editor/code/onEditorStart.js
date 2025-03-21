@@ -1,6 +1,6 @@
 import { _app, _script } from '$lib';
 import { formatAllCardNodes } from './formatCard/';
-import { convertTextToHtmlCardsOnly } from './parseScript';
+import { convertTextToHtmlCardsOnly, createNested } from './parseScript';
 import { createCards } from './createCards';
 
 export async function onEditorStart(editor) {
@@ -18,6 +18,7 @@ async function checkForImport() {
 		const startingHtml = convertTextToHtmlCardsOnly(script.import);
 		editor.commands.setContent(startingHtml);
 		pb.db.scripts.update(script.id, { import: '' });
+		createNested();
 	} else {
 		// console.log('not importing text');
 	}
@@ -26,6 +27,7 @@ async function checkForImport() {
 		console.log('importing json...', script.importJson);
 		editor.commands.setContent(script.importJson.content);
 		pb.db.scripts.update(script.id, { importJson: '' });
+
 
 	} else {
 		// console.log('not importing json');
