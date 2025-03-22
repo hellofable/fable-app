@@ -35,7 +35,8 @@ const settings = {
 	},
 	view: {
 		mode: 'cards',
-		dark: false
+		dark: false,
+		hideNonPrinting: false,
 	},
 	currentCard: {
 		id: null

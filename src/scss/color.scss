@@ -169,10 +169,13 @@ body.page-script {
 			.sidecard-inner {
 				[data-bs-theme='dark'] & {
 					background: var(--grey-450);
+					color: #a9a9a9;
 				}
 
 				[data-bs-theme='light'] & {
 					background: white;
+					color: #6e6e6e;
+					font-weight: bold;
 				}
 			}
 		}

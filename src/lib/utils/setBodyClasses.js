@@ -26,6 +26,15 @@ export const setBodyClasses = () => {
 			window.document.body.classList.remove('show-sceneNumbers');
 		}
 
+
+		if (currentValue.view.hideNonPrinting) {
+			window.document.body.classList.add('hide-non-printing');
+
+		} else {
+			window.document.body.classList.remove('hide-non-printing');
+		}
+
+
 		if (currentValue.view.mode == 'script') {
 			window.document.body.classList.remove('view-cards');
 			window.document.body.classList.add('view-script');

@@ -40,3 +40,14 @@ body.page-script {
 	// 	font-size: small;
 	// }
 }
+
+
+body.hide-non-printing {
+
+	.modifier-note,
+	.section,
+	.synopsis,
+	.fable-note {
+		opacity: 0.1;
+	}
+}

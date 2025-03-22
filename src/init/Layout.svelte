@@ -15,3 +15,6 @@
 <Route path="/scripts">
   <Scripts />
 </Route>
+<Route path="/scripts/folder/:folderId">
+  <Scripts />
+</Route>

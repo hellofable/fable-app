@@ -1,6 +1,5 @@
 <script>
   import { meta } from "tinro";
-  import { addSectionsToScriptText } from "$lib";
 
   const route = meta();
 
@@ -66,10 +65,10 @@
           }
 
           if (data.template != "none") {
-            addSectionsToScriptText({
-              scriptText: data.scriptFile.content,
-              templateName: data.template,
-            });
+            // addSectionsToScriptText({
+            //   scriptText: data.scriptFile.content,
+            //   templateName: data.template,
+            // });
             _modal.close();
           }
         },

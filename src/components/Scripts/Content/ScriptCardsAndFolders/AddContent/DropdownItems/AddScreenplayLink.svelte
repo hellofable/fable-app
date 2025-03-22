@@ -1,6 +1,6 @@
 <script>
   import { meta } from "tinro";
-  import fableFourAct from "/src/assets/maps/fableFourAct.txt?raw";
+  import { storymaps } from "$lib";
   const route = meta();
 
   import { _modal, pb, _user } from "$lib";
@@ -61,7 +61,10 @@
           };
 
           if (data.template === "fableFourAct") {
-            fields.import = fableFourAct;
+            const startingHtml = storymaps.get.html("fableFourAct");
+            console.log(startingHtml);
+
+            fields.import = startingHtml;
           }
 
           // save the script

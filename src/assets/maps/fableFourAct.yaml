@@ -1,83 +1,84 @@
 cards:
-  - title: ACT ONE
+  - title: "# ACT ONE"
     type: section
     nextPercentage: 0
     description: The Ordinary World
 
   - title: Opening Image
     type: beat
-    description: A single image that sets the tone and theme of the story.
+    description: "A single image that sets the tone and theme of the story."
 
-  - title: Set-Up
+  - title: "## Set-Up"
     type: section
     description: The protagonist’s ordinary world is fully established, revealing what’s missing.
 
   - title: Theme Stated
     type: beat
-    description: A character, event, or dialogue subtly introduces the story’s deeper message.
+    description: "A character, event, or dialogue subtly introduces the story’s deeper message."
 
-  - title: Catalyst
-    type: section
-    nextPercentage: 10
+  - title: "Catalyst"
+    type: beat
     description: The inciting incident shakes the protagonist’s world and sparks change.
 
-  - title: Debate
+  - type: emptyCards
+    count: 3
+
+  - title: "## Debate"
     type: section
     nextPercentage: 12
     description: The protagonist wrestles with whether or not to act.
 
-  - title: Break Into Two
+  - title: "## Break Into Two"
     type: section
     nextPercentage: 20
     description: The protagonist leaves behind their old world and steps into the new.
 
-  - title: ACT TWO (A)
+  - title: "# ACT TWO (A)"
     type: section
     nextPercentage: 25
     description: Initiation
 
-  - title: Rising Action
+  - title: "## Rising Action"
     type: section
     description: The protagonist engages with the new world, facing challenges, growth, and exploration.
 
-  - title: B Story
-    type: section
-    nextPercentage: 27
+  - title: "B Story"
+    type: beat
     description: A subplot in introduced, often a relationship, which serves a counterpoint to the main arc.
 
-  - title: Mid Sequence
+  - title: "# Mid Sequence"
     type: section
     nextPercentage: 47
     description: A major shift occurs, raising the stakes and altering the story’s trajectory.
 
-  - title: ACT TWO (B)
+  - title: "# ACT TWO (B)"
     type: section
     nextPercentage: 50
     description: Crisis
 
-  - title: Mounting Pressure
+  - title: "## Mounting Pressure"
     type: section
     description: Internal and external forces intensify, making success feel further out of reach.
 
-  - title: Major Setback
+  - title: "## Major Setback"
     type: section
     nextPercentage: 75
     description: A significant failure, loss, or betrayal drives the protagonist to a low point.
 
-  - title: Break Into Three
+  - title: "## Break Into Three"
     type: section
     nextPercentage: 78
     description: A final breakthrough moment leads the protagonist into the climax.
 
-  - title: ACT THREE
+  - title: "# ACT THREE"
     type: section
     nextPercentage: 80
     description: The Resolution
 
-  - title: Finale
+  - title: "## Finale"
     type: section
     description: The protagonist faces the ultimate test and emerges transformed.
 
-  - title: Final Image
+  - title: "Final Image"
     type: beat
-    description: A visual or moment that mirrors or contrasts the Opening Image, showing growth.
+    description: "A visual or moment that mirrors or contrasts the Opening Image, showing growth."

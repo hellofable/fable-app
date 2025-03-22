@@ -7,7 +7,7 @@
   import { _scripts, _user } from "$lib";
 
   let sortedScripts = [];
-  $: if ($_scripts) {
+  $: if ($_scripts && $_scripts.filter) {
     sortedScripts = Array.from(
       new Map(
         $_scripts

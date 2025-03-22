@@ -1,14 +1,15 @@
 import { _editor, debounce } from '$lib';
 
 
-export function convertTextToHtmlCardsOnly(scriptText) {
+export function convertTextToHtmlCardsOnly(scriptText, fromTemplate = false) {
 	const cards = splitTextIntoCards(scriptText);
-	const html = convertCardsToHtml(cards);
+	const html = convertCardsToHtml(cards, fromTemplate);
 	return html;
 	return;
 }
 
-function convertCardsToHtml(cards) {
+function convertCardsToHtml(cards, fromTemplate) {
+
 	let html = '';
 	html = '<cardgrid>';
 
@@ -16,9 +17,13 @@ function convertCardsToHtml(cards) {
 		html += `<div class="card">`;
 
 		// Split the card content by newlines
-		const lines = card.trim().split('\n');
+		let lines = card.trim().split('\n');
 
 		lines.forEach((line) => {
+			if (fromTemplate) {
+
+				line = line.replace(/^\./, ''); // Remove leading period if fromTemplate is true
+			}
 			html += `<action>${line}</action>`;
 		});
 
@@ -27,6 +32,7 @@ function convertCardsToHtml(cards) {
 	html += '</cardgrid>';
 	return html;
 }
+
 
 export function splitTextIntoCards(scriptText) {
 	// console.log("no markers");

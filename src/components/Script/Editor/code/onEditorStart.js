@@ -15,8 +15,8 @@ async function checkForImport() {
 
 	if (!script) return;
 	if (script?.import) {
-		const startingHtml = convertTextToHtmlCardsOnly(script.import);
-		editor.commands.setContent(startingHtml);
+
+		editor.commands.setContent(script.import);
 		pb.db.scripts.update(script.id, { import: '' });
 		createNested();
 	} else {
