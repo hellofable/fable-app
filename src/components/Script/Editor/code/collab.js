@@ -2,7 +2,6 @@ import { PUBLIC_HP } from '$lib/env.js'
 import { _app, pb, _script, _editor } from '$lib';
 import * as Y from 'yjs';
 import { HocuspocusProvider } from '@hocuspocus/provider';
-import { diffLines } from 'diff';
 
 export async function collab(scriptId) {
 	const ydoc = new Y.Doc();
@@ -24,8 +23,6 @@ export async function collab(scriptId) {
 		_app.updateSetting('server.hp.status', status);
 	});
 
-	window.p = provider;
-	window.y = ydoc;
 
 	return { provider, ydoc };
 }

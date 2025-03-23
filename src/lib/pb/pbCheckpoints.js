@@ -74,11 +74,6 @@ async function get({ docId }) {
 
 		const result = await response.json();
 
-
-
-
-
-
 		if (!response.ok) {
 			throw new Error(result.message || 'Failed to share script');
 		}

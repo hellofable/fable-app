@@ -43,6 +43,8 @@ export { listenForIframeMessages } from './utils/listenForIframeMessages';
 export { storymaps } from "./utils/storymaps.js"
 export { createNested, createNestedImmediate } from "../components/Script/Editor/code/parseScript"
 export { createCards, createCardsImmediate } from "../components/Script/Editor/code/createCards"
+export { convertTextToHtmlCardsOnly } from "../components/Script/Editor/code/parseScript"
+export { convertYStateToProsemirror } from "./utils/convertYStateToProsemirror"
 // //stripe
 
 export { pb } from './pb/pb';

@@ -3,6 +3,7 @@
   import { dateFormat } from "$lib";
   import RestoreButton from "./Buttons/RestoreButton.svelte";
   import DeleteButton from "./Buttons/DeleteButton.svelte";
+  import CurrentLink from "./CurrentLink.svelte";
 
   export let isCollapsed;
   export let script;
@@ -50,6 +51,7 @@
 </script>
 
 <div class="px-3 pb-3 small">
+  <CurrentLink {script} />
   {#each items as item (item.id)}
     <div class="backup" id="backup-{item.id}">
       <a href="/scripts?backupId={item.id}" role="button" class="text-muted"

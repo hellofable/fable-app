@@ -1,5 +1,5 @@
 import { _scripts, _user, pb } from '$lib';
-import { scripts, folders, users, stripe } from "./collections"
+import { scripts, folders, users, stripe, states } from "./collections"
 
 
 
@@ -11,7 +11,8 @@ const db = {
 	stripe,
 	scripts,
 	folders,
-	users
+	users,
+	states
 };
 
 // Export the db object

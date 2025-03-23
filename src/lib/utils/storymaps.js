@@ -19,7 +19,7 @@ export const storymaps = {
         html: function (mapTitle) {
             const yaml = maps[mapTitle];
             const text = yamlToText(yaml); // Convert YAML to text first
-            return convertTextToHtmlCardsOnly(text, true); // Then convert text to HTML
+            return convertTextToHtmlCardsOnly(text, true);
         },
         text: function (mapTitle) {
             const yaml = maps[mapTitle];

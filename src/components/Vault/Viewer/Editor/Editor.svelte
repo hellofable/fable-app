@@ -1,6 +1,4 @@
 <script>
-  // @ts-nocheck  import * as Y from 'yjs';
-
   import { onDestroy, onMount } from "svelte";
   import { Editor } from "@tiptap/core";
   import StarterKit from "./code/starterKit/starterKit";
@@ -9,7 +7,8 @@
   import { _editor, _script } from "$lib";
 
   let editorElement, editor;
-  export let json;
+  export let json = {};
+  export let script;
 
   onMount(async () => {
     const extns = [StarterKit, ...schema];
@@ -32,32 +31,8 @@
   onDestroy(() => {
     console.log("Destroying provider");
   });
-
-  function applyDelta(state) {
-    const newState = Uint8Array.from(atob(state), (c) => c.charCodeAt(0));
-
-    Y.applyUpdate(ydoc, newState);
-
-    // Y.applyUpdate(ydoc, newState);
-  }
-
-  let currentDelta = 0;
-  function applyNextDelta() {
-    if (currentDelta < checkpointWithDeltas.deltas.length) {
-      console.log(checkpointWithDeltas.deltas[currentDelta]);
-
-      console.log("Applying delta", currentDelta);
-      applyDelta(checkpointWithDeltas.deltas[currentDelta].state);
-      currentDelta++;
-    }
-  }
 </script>
 
-<div class="viewew-editor" bind:this={editorElement} />
-
-<style>
-  .viewew-editor {
-    font-size: 14px;
-    font-family: monospace;
-  }
-</style>
+<div class:d-none={!$script.id} class=" flex-shrink-1 flex-grow-1 mt-2 px-2">
+  <div bind:this={editorElement} />
+</div>

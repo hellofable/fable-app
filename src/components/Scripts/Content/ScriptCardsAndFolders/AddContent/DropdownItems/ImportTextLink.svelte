@@ -3,7 +3,7 @@
 
   const route = meta();
 
-  import { _modal, pb, _user } from "$lib";
+  import { _modal, pb, _user, convertTextToHtmlCardsOnly } from "$lib";
   import Form from "/src/components/Other/Form.svelte";
 
   function clickAdd(event) {
@@ -59,7 +59,7 @@
             // Call the import function
             const res = await pb.db.scripts.importFromText(
               data.scriptFile.filename,
-              data.scriptFile.content
+              convertTextToHtmlCardsOnly(data.scriptFile.content)
             );
             if (res?.success) _modal.close();
           }
