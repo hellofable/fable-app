@@ -55,30 +55,35 @@ body.page-script.view-cards .fable-card {
 	height: 200px;
 }
 
+/* targets the .node-card inside the .page-script and .view-script classes, making it span the full width of the grid. */
 body.page-script.view-script .node-card {
 	grid-column: 1 / -1;
 }
 
+/* applies to the first .node-card that contains a child element with the .fable-card and .is-section class, making it span the full width of the grid. */
 .node-card:first-child:has(.fable-card.is-section) {
 	grid-column: 1 / -1;
 }
 
+/* makes all .node-card elements inside a 'cardgrid' element span the full width of the grid. */
 cardgrid {
 	grid-column: 1 / -1;
 }
 
+/* hides all .line child elements of .node-card within a 'cardgrid' if the .node-card has a child .fable-card with the .collapsed class, starting from the second .line element. */
 cardgrid .node-card:has(.fable-card.collapsed) .line:nth-child(n + 2) {
 	display: none;
 }
 
+/* hides all .node-card elements that come after the first .node-card inside 'cardgrid' if the first .node-card has a .fable-card with the .collapsed class. */
 cardgrid>.node-card:first-child:has(.fable-card.collapsed)~.node-card {
 	display: none;
 }
 
+/* hides the entire 'cardgrid' if the first .node-card inside it has a .fable-card with the .collapsed class. */
 cardgrid>.node-card:first-child:has(.fable-card.collapsed)~cardgrid {
 	display: none;
 }
-
 
 
 

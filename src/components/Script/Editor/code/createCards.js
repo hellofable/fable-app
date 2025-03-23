@@ -2,6 +2,7 @@ import { editorHelpers } from './helpers';
 import { _cards, logTimer, establishCardsHierarchy, debounce } from '$lib';
 
 export const createCards = debounce(createCardsDebounced, 500);
+export const createCardsImmediate = createCardsDebounced;
 async function createCardsDebounced() {
 	// return
 	console.log('create cards');

@@ -1,7 +1,7 @@
 <script>
   import { NodeViewWrapper, NodeViewContent } from "svelte-tiptap";
   import { getCardNodeAtPos } from "../code/helpers";
-  import { _app, _cards } from "$lib";
+  import { _app, _cards, createNested } from "$lib";
   import CollapseButton from "./CollapseButton.svelte";
   import Dropdown from "./Dropdown/Dropdown.svelte";
   export let node,
@@ -32,7 +32,10 @@
     display = card.dependencyInfo?.hasCollapsedParent ? "d-none" : "d-flex";
     isSection = card.section?.isSection ? "is-section" : "is-not-section";
     isSelectedCard = $_app.currentCard.id == card.id ? "selected-card" : "";
-    isCollapsed = card.section?.sectionCollapsed ? "collapsed" : "";
+    isCollapsed =
+      card.section?.sectionCollapsed && card.section?.isSection
+        ? "collapsed"
+        : "";
     hasCollapsedParent = card.dependencyInfo?.hasCollapsedParent
       ? "has-collapsed-parent"
       : "";

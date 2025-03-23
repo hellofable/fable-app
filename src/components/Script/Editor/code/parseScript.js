@@ -5,7 +5,6 @@ export function convertTextToHtmlCardsOnly(scriptText, fromTemplate = false) {
 	const cards = splitTextIntoCards(scriptText);
 	const html = convertCardsToHtml(cards, fromTemplate);
 	return html;
-	return;
 }
 
 function convertCardsToHtml(cards, fromTemplate) {
@@ -74,6 +73,7 @@ export function splitTextIntoCards(scriptText) {
 // createNested
 
 export const createNested = debounce(debounceCreateNested, 1000);
+export const createNestedImmediate = debounceCreateNested;
 function debounceCreateNested() {
 	const editor = _editor.get();
 
@@ -100,7 +100,6 @@ function debounceCreateNested() {
 	editor.commands.setTextSelection({ from, to });
 }
 
-window.createNested = createNested;
 
 function createCardsArr() {
 	const editor = _editor.get();

@@ -41,7 +41,8 @@ export { showPopup } from './utils/showPopup';
 export { setAppSettingsFromLocal } from './utils/setAppSettingsFromLocal';
 export { listenForIframeMessages } from './utils/listenForIframeMessages';
 export { storymaps } from "./utils/storymaps.js"
-
+export { createNested, createNestedImmediate } from "../components/Script/Editor/code/parseScript"
+export { createCards, createCardsImmediate } from "../components/Script/Editor/code/createCards"
 // //stripe
 
 export { pb } from './pb/pb';

@@ -9,7 +9,7 @@
   let sharedScripts = [];
 
   // sort and filter folders and scipts by folderId & inTrash
-  $: if ($_scripts) {
+  $: if ($_scripts && $_scripts?.filter) {
     sharedScripts = Array.from(
       new Map(
         $_scripts

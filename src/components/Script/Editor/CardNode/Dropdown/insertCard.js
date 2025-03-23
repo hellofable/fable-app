@@ -1,3 +1,5 @@
+import { createNestedImmediate, createCardsImmediate } from "$lib"
+
 export function insertCard(aboveOrBelow, getPos, node) {
 	let pos;
 
@@ -22,4 +24,15 @@ export function insertCard(aboveOrBelow, getPos, node) {
 
 	// Insert the parsed node
 	editor.view.dispatch(editor.view.state.tr.insert(nodePos, nodeToInsert));
+
+
+	console.log("create nested");
+
+	createCardsImmediate()
+	createNestedImmediate();
+
 }
+
+
+// window.cc = createCards;
+// window.cn = createNested;

@@ -55,14 +55,20 @@ function createCardStore() {
 			}),
 		collapseOrExpandAll: (isCollapsed) => {
 			_cards.update((cards) => {
-				const updatedCards = cards.map((card) => ({
-					...card,
-
-					section: {
-						...card.section,
-						sectionCollapsed: isCollapsed
+				const updatedCards = cards.map((card) => {
+					// Only update the card if card.section.isSection is true
+					if (card.section.isSection) {
+						return {
+							...card,
+							section: {
+								...card.section,
+								sectionCollapsed: isCollapsed
+							}
+						};
 					}
-				}));
+					// Otherwise, return the card unchanged
+					return card;
+				});
 				return updatedCards;
 			});
 		}
