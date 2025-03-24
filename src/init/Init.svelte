@@ -32,6 +32,20 @@
 
   $: setPageTitle($route.url);
   $: $_route = $route;
+
+  document.addEventListener("click", (event) => {
+    const allowedTags = ["A", "BUTTON", "INPUT"];
+    if (allowedTags.includes(event.target.tagName)) return;
+
+    // Check if the clicked element is inside an element with class .viewer
+    if (!event.target.closest(".viewer")) {
+      const url = new URL(window.location.href);
+      if (url.search) {
+        // Only update if query parameters exist
+        router.goto(url.pathname, { replaceState: true });
+      }
+    }
+  });
 </script>
 
 {#if $_user?.id}

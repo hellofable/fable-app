@@ -1,6 +1,6 @@
 <script>
   import { meta } from "tinro";
-  import { storymaps } from "$lib";
+  import { storymaps, _route } from "$lib";
   const route = meta();
 
   import { _modal, pb, _user } from "$lib";
@@ -58,6 +58,7 @@
           let fields = {
             title: data.title,
             synopsis: data.synopsis || "",
+            folderId: $route.params.folderId || "root",
           };
 
           if (data.template === "fableFourAct") {

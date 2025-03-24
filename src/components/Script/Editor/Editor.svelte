@@ -2,6 +2,8 @@
   // @ts-nocheck
   import * as Y from "yjs";
 
+  import EditScriptButton from "/src/components/Scripts/Content/ScriptCardsAndFolders/ScriptCards/ScriptCard/Dropdown/EditScriptButton.svelte";
+
   import { onDestroy, onMount, tick } from "svelte";
   import { Editor } from "@tiptap/core";
   import StarterKit from "./code/starterKit/starterKit";
@@ -84,11 +86,21 @@
   });
 </script>
 
-<h3>{$_script?.title}</h3>
-<p class="lead">{script.synopsis}</p>
+<div class="script-details-wrapper">
+  <div class="fs-3">{$_script?.title}</div>
+  <div class="lead">{script.synopsis}</div>
+  <EditScriptButton script={$_script} />
+</div>
+
 <div
   bind:clientWidth={$_app.editorWidth}
   id="fable-editor"
   class="w-100"
   bind:this={editorElement}
 />
+
+<style>
+  .script-details-wrapper {
+    line-height: 1;
+  }
+</style>

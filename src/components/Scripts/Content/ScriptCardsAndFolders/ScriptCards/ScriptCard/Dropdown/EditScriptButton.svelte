@@ -53,5 +53,21 @@
   }
 </script>
 
-<!-- svelte-ignore a11y-invalid-attribute -->
-<a on:click={clickEdit} class="dropdown-item" href="">Update Script</a>
+{#if $route.url.startsWith("/scripts/")}
+  <a on:click={clickEdit} class="dropdown-item" href={null}>Update Script</a>
+{/if}
+
+{#if $route.url.startsWith("/script/")}
+  <a on:click={clickEdit} class="edit-link small" href={null}> (edit) </a>
+{/if}
+
+<style>
+  .edit-link {
+    cursor: pointer;
+    position: relative;
+    opacity: 0.3;
+  }
+  .edit-link:hover {
+    opacity: 0.6;
+  }
+</style>

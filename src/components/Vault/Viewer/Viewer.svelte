@@ -10,7 +10,8 @@
   import { derived, writable } from "svelte/store";
 
   import Loading from "./Loading.svelte";
-  import Header from "./Header.svelte";
+  import CheckpointHeader from "./CheckpointHeader.svelte";
+  import CurrentHeader from "./CurrentHeader/CurrentHeader.svelte";
   import Editor from "./Editor/Editor.svelte";
 
   // Writable store for checkpoint data
@@ -20,11 +21,12 @@
   // Fetch checkpoint data when _app.backupId changes
   $: if ($_route.query.backupId) {
     const { backupId } = $_route.query;
-    if (!backupId.endsWith("_")) setCheckpoint(backupId);
+    if (!backupId.endsWith("_")) loadCheckpoint(backupId);
     if (backupId.endsWith("_")) loadCurrent(backupId);
   }
 
   async function loadCurrent(backupId) {
+    $_app.isLoadingBackup = true;
     file = "";
     const scriptId = backupId.split("_")[0];
     $checkpoint = { scriptId };
@@ -32,10 +34,14 @@
     const json = convertYStateToProsemirror(doc.data.state);
     const jsonString = JSON.stringify(json);
     file = jsonString;
+    setTimeout(() => {
+      $_app.isLoadingBackup = false;
+    }, 1000);
   }
 
   // called from reactive statement above
-  async function setCheckpoint(docId) {
+  async function loadCheckpoint(docId) {
+    $_app.isLoadingBackup = true;
     file = null;
     try {
       let response = await pbCheckpoints.get({ docId });
@@ -44,7 +50,6 @@
         checkpoint.set(response.data.checkpoint);
         file = response.data.file;
 
-        $_app.isLoadingBackup = true;
         setTimeout(() => {
           $_app.isLoadingBackup = false;
         }, 1000);
@@ -67,7 +72,14 @@
   class="viewer shadow d-flex flex-column scroller"
 >
   <Loading />
-  <Header {checkpoint} {script} {file} />
+
+  {#if $checkpoint?.collectionName == "checkpoints"}
+    <CheckpointHeader {checkpoint} {script} {file} />
+  {/if}
+
+  {#if $checkpoint?.collectionName != "checkpoints"}
+    <CurrentHeader {checkpoint} {script} {file} />
+  {/if}
 
   {#if file && $script.id}
     <Editor json={file} {script} />
