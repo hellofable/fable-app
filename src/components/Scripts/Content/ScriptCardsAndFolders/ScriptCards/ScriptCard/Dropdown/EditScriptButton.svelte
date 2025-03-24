@@ -53,7 +53,7 @@
   }
 </script>
 
-{#if $route.url.startsWith("/scripts/")}
+{#if $route.url.startsWith("/scripts")}
   <a on:click={clickEdit} class="dropdown-item" href={null}>Update Script</a>
 {/if}
 
