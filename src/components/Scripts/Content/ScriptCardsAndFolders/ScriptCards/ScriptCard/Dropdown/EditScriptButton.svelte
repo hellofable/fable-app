@@ -11,7 +11,7 @@
     event.stopPropagation();
     event.preventDefault();
     _modal.open(Form, {
-      title: "New Script",
+      title: "Update Script",
       buttons: {
         submit: {
           title: "Update",
