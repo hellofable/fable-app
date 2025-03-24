@@ -2,12 +2,31 @@
   import { _scripts, _app } from "$lib";
   import VaultOptions from "./VaultOptions/VaultOptions.svelte";
   import VaultCard from "./VaultCard/VaultCard.svelte";
+  import { router } from "tinro";
+  import { onMount } from "svelte";
 
   let scriptsSorted = [];
 
   $: if ($_scripts && $_scripts.sort) {
     scriptsSorted = $_scripts.sort((a, b) => b.scriptNumber - a.scriptNumber);
   }
+
+  // Close the viewer if the user clicks outside of it
+  onMount(() => {
+    document.addEventListener("click", (event) => {
+      const allowedTags = ["A", "BUTTON", "INPUT"];
+      if (allowedTags.includes(event.target.tagName)) return;
+
+      // Check if the clicked element is inside an element with class .viewer
+      if (!event.target.closest(".viewer")) {
+        const url = new URL(window.location.href);
+        if (url.search) {
+          // Only update if query parameters exist
+          router.goto(url.pathname, { replaceState: true });
+        }
+      }
+    });
+  });
 </script>
 
 <div

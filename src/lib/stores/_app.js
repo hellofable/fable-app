@@ -4,6 +4,7 @@ import { writable, get } from 'svelte/store';
 const settings = {
 	isAuthenticating: false,
 	isLoadingBackup: true,
+	isLoadingScript: false,
 	scripts: {
 		showScripts: true,
 		showShared: true

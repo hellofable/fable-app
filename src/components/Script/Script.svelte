@@ -1,32 +1,36 @@
 <script>
-	import { _user, _app, _cards } from '$lib';
+  import { _user, _app, _cards } from "$lib";
 
-	import ToolBar from '../Toolbar/Toolbar.svelte';
-	import Sidebar from './Sidebar/Sidebar.svelte';
+  import ToolBar from "../Toolbar/Toolbar.svelte";
+  import Sidebar from "./Sidebar/Sidebar.svelte";
 
-	import { onMount, onDestroy } from 'svelte';
-	import Editor from './Editor/Editor.svelte';
+  import { onMount, onDestroy } from "svelte";
+  import Editor from "./Editor/Editor.svelte";
 
-	export let script;
+  export let script;
 
-	onDestroy(() => {
-		_cards.set([]);
-	});
+  onDestroy(() => {
+    _cards.set([]);
+  });
+
+  onMount(() => {
+    $_app.isLoadingScript = true;
+  });
 </script>
 
 {#if script}
-	<div id="workspace" class="h-100 overflow-none d-flex">
-		<ToolBar />
-		<Sidebar />
-		<div id="editor-wrapper">
-			<Editor {script} />
-		</div>
-	</div>
+  <div id="workspace" class="h-100 overflow-none d-flex">
+    <ToolBar />
+    <Sidebar />
+    <div id="editor-wrapper">
+      <Editor {script} />
+    </div>
+  </div>
 {/if}
 
 <style>
-	#editor-wrapper {
-		flex: 1;
-		overflow-y: auto;
-	}
+  #editor-wrapper {
+    flex: 1;
+    overflow-y: auto;
+  }
 </style>
