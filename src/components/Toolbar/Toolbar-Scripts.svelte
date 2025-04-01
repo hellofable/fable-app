@@ -2,7 +2,7 @@
   import { _app } from "$lib";
   import DarkLight from "./buttons/DarkLight.svelte";
   import FullScreenButton from "./buttons/FullScreenButton.svelte";
-  import fableLogo from "/src/assets/xxx.svg";
+  import fableLogo from "/src/assets/mainlogo.svg";
 
   function handleClick() {
     $_app.scriptsSidebar.show = !$_app.scriptsSidebar.show;

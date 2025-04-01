@@ -52,9 +52,9 @@ function yamlToText(yamlText) {
 
 
 
-        if (element.type === "emptyCards") {
+        if (element.emptyCardsAfter) {
             let emptyCards = '. \n\n';
-            for (let i = 0; i < element.count; i++) {
+            for (let i = 0; i < element.emptyCardsAfter; i++) {
                 out += emptyCards;
             }
         }

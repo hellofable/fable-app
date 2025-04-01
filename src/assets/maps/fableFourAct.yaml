@@ -19,9 +19,7 @@ cards:
   - title: "Catalyst"
     type: beat
     description: The inciting incident shakes the protagonist’s world and sparks change.
-
-  - type: emptyCards
-    count: 3
+    emptyCardsAfter: 3
 
   - title: "## Debate"
     type: section
