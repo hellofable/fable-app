@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [svelte()],
   server: {
     port: 8200,
-    allowedHosts: ['app-dev.hellofable.com']
+    allowedHosts: ['app-dev.hellofable.com', 'ai-dev.hellofable.com'],
 
   },
   resolve: {

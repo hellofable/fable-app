@@ -1,28 +1,37 @@
 import yaml from 'yaml'; // Import YAML parser
-import fableFourAct from "/public/maps/fableFourAct.yaml?raw";
 import { convertTextToHtmlCardsOnly } from "/src/components/Script/Editor/code/parseScript.js";
 
 
-const maps = {
-    fableFourAct,
-    // Add more maps here
-};
+async function fetchMap(filename) {
+    const response = await fetch(`https://api-dev.hellofable.com/api/maps?filename=${filename}`);
+    if (!response.ok) {
+        console.error("Error fetching map:", response.statusText);
+        return;
+    }
+    const mapData = await response.text();
+    return mapData;
+}
+
+
+
 
 export const storymaps = {
     get: {
-        yaml: function (mapTitle) {
-            return maps[mapTitle];
+        yaml: async function (mapTitle) {
+            const map = await fetchMap(mapTitle);
+            return map
         },
-        json: function (mapTitle) {
-            return yaml.parse(maps[mapTitle]);
+        json: async function (mapTitle) {
+            const map = await fetchMap(mapTitle);
+            return yaml.parse(map);
         },
-        html: function (mapTitle) {
-            const yaml = maps[mapTitle];
+        html: async function (mapTitle) {
+            const yaml = await fetchMap(mapTitle);
             const text = yamlToText(yaml); // Convert YAML to text first
             return convertTextToHtmlCardsOnly(text, true);
         },
-        text: function (mapTitle) {
-            const yaml = maps[mapTitle];
+        text: async function (mapTitle) {
+            const yaml = await fetchMap(mapTitle);
             return yamlToText(yaml);
         }
     }

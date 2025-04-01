@@ -62,7 +62,9 @@
           };
 
           if (data.template === "fableFourAct") {
-            const startingHtml = storymaps.get.html("fableFourAct");
+            const startingHtml = await storymaps.get.html("fableFourAct");
+            console.log(startingHtml);
+
             fields.import = startingHtml;
           }
 
