@@ -1,5 +1,5 @@
 import yaml from 'yaml'; // Import YAML parser
-import fableFourAct from "/src/assets/maps/fableFourAct.yaml?raw";
+import fableFourAct from "/public/maps/fableFourAct.yaml?raw";
 import { convertTextToHtmlCardsOnly } from "/src/components/Script/Editor/code/parseScript.js";
 
 
