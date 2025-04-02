@@ -3,7 +3,7 @@ import { convertTextToHtmlCardsOnly } from "/src/components/Script/Editor/code/p
 
 
 async function fetchMap(filename) {
-    const response = await fetch(`https://api-dev.hellofable.com/api/maps?filename=${filename}`);
+    const response = await fetch(`maps/${filename}.yaml`);
     if (!response.ok) {
         console.error("Error fetching map:", response.statusText);
         return;

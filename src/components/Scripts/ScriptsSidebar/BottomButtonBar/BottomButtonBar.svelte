@@ -19,6 +19,6 @@
     href={null}
     on:click={() => ($_app.scriptsSidebar.bottomButtons.selected = "Vault")}
   >
-    <i class="bi bi-hdd"></i> Vault
+    <i class="bi bi-hdd"></i> Backups
   </a>
 </nav>

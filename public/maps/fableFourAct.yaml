@@ -1,82 +1,115 @@
 cards:
-  - title: "# ACT ONE"
+  - id: act_1
+    title: "# ACT ONE"
     type: section
     nextPercentage: 0
     description: The Ordinary World
 
-  - title: Opening Image
+  - id: opening_image
+    title: Opening Image
     type: beat
     description: "A single image that sets the tone and theme of the story."
+    builderstep: true
+    aiHelperText: "This section should be one image, 10 words or less. It should sum up the theme or aesthetic of the movie. It should not feature the main character."
 
-  - title: "## Set-Up"
+  - id: setup
+    title: "## Set-Up"
     type: section
-    description: The protagonist’s ordinary world is fully established, revealing what’s missing.
+    description: The protagonist's ordinary world is fully established, revealing what's missing.
+    builderstep: true
 
-  - title: Theme Stated
+  - id: theme_stated
+    title: Theme Stated
     type: beat
-    description: "A character, event, or dialogue subtly introduces the story’s deeper message."
+    description: "A character, event, or dialogue subtly introduces the story's deeper message."
+    builderstep: true
 
-  - title: "Catalyst"
+  - id: catalyst
+    title: "Catalyst"
     type: beat
-    description: The inciting incident shakes the protagonist’s world and sparks change.
+    description: The inciting incident shakes the protagonist's world and sparks change.
+    builderstep: true
     emptyCardsAfter: 3
 
-  - title: "## Debate"
+  - id: debate
+    title: "## Debate"
     type: section
     nextPercentage: 12
     description: The protagonist wrestles with whether or not to act.
+    builderstep: true
 
-  - title: "## Break Into Two"
+  - id: break_into_two
+    title: "## Break Into Two"
     type: section
     nextPercentage: 20
     description: The protagonist leaves behind their old world and steps into the new.
+    builderstep: true
 
-  - title: "# ACT TWO (A)"
+  - id: act_2a
+    title: "# ACT TWO (A)"
     type: section
     nextPercentage: 25
     description: Initiation
 
-  - title: "## Rising Action"
-    type: section
-    description: The protagonist engages with the new world, facing challenges, growth, and exploration.
-
-  - title: "B Story"
+  - id: b_story
+    title: "B Story"
     type: beat
     description: A subplot in introduced, often a relationship, which serves a counterpoint to the main arc.
+    builderstep: true
 
-  - title: "# Mid Sequence"
+  - id: rising_action
+    title: "## Rising Action"
+    type: section
+    description: The protagonist engages with the new world, facing challenges, growth, and exploration.
+    builderstep: true
+
+  - id: mid_sequence
+    title: "# Mid Sequence"
     type: section
     nextPercentage: 47
-    description: A major shift occurs, raising the stakes and altering the story’s trajectory.
+    description: A major shift occurs, raising the stakes and altering the story's trajectory.
+    builderstep: true
 
-  - title: "# ACT TWO (B)"
+  - id: act_2b
+    title: "# ACT TWO (B)"
     type: section
     nextPercentage: 50
     description: Crisis
 
-  - title: "## Mounting Pressure"
+  - id: mounting_pressure
+    title: "## Mounting Pressure"
     type: section
     description: Internal and external forces intensify, making success feel further out of reach.
+    builderstep: true
 
-  - title: "## Major Setback"
+  - id: major_setback
+    title: "## Major Setback"
     type: section
     nextPercentage: 75
     description: A significant failure, loss, or betrayal drives the protagonist to a low point.
+    builderstep: true
 
-  - title: "## Break Into Three"
+  - id: break_into_three
+    title: "## Break Into Three"
     type: section
     nextPercentage: 78
     description: A final breakthrough moment leads the protagonist into the climax.
+    builderstep: true
 
-  - title: "# ACT THREE"
+  - id: act_3
+    title: "# ACT THREE"
     type: section
     nextPercentage: 80
     description: The Resolution
 
-  - title: "## Finale"
+  - id: finale
+    title: "## Finale"
     type: section
     description: The protagonist faces the ultimate test and emerges transformed.
+    builderstep: true
 
-  - title: "Final Image"
+  - id: final_image
+    title: "Final Image"
     type: beat
     description: "A visual or moment that mirrors or contrasts the Opening Image, showing growth."
+    builderstep: true
