@@ -25,26 +25,26 @@
             required: true,
             showLabel: false,
           },
-          {
-            id: "template",
-            name: "template",
-            type: "select",
-            showLabel: false,
-            required: true,
-            defaultValue: "none",
-            options: [
-              {
-                value: "none",
-                label: "No Template",
-                helperText: "Do not apply a template to this script.",
-              },
-              {
-                value: "fableFourAct",
-                label: "Fable Four Act",
-                helperText: `Follows a timeless four-act structure—Setup, Initiation, Crisis, and Resolution—with a fresh take on character transformation. It balances external trials, internal growth, and a B-Story that enriches the narrative.`,
-              },
-            ],
-          },
+          // {
+          //   id: "template",
+          //   name: "template",
+          //   type: "select",
+          //   showLabel: false,
+          //   required: true,
+          //   defaultValue: "none",
+          //   options: [
+          //     {
+          //       value: "none",
+          //       label: "No Template",
+          //       helperText: "Do not apply a template to this script.",
+          //     },
+          //     {
+          //       value: "fableFourAct",
+          //       label: "Fable Four Act",
+          //       helperText: `Follows a timeless four-act structure—Setup, Initiation, Crisis, and Resolution—with a fresh take on character transformation. It balances external trials, internal growth, and a B-Story that enriches the narrative.`,
+          //     },
+          //   ],
+          // },
         ],
 
         onSubmit: async (data) => {
