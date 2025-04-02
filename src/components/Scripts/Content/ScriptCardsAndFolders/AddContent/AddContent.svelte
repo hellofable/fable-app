@@ -21,8 +21,6 @@
       <AddFolderLink />
       <hr class="dropdown-divider" />
       <ImportTextLink />
-      <hr class="dropdown-divider" />
-      <StoryBuilder />
     </li>
   </ul>
 </div>
