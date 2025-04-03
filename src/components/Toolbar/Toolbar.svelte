@@ -1,5 +1,6 @@
 <script>
   import { _app } from "$lib";
+  import { onMount } from "svelte";
   import DarkLight from "./buttons/DarkLight.svelte";
   import SidebarToggle from "./buttons/SidebarToggle.svelte";
   import CollapseAllToggles from "./buttons/CollapseAllToggles.svelte";
@@ -10,6 +11,14 @@
   import FullScreenButton from "./buttons/FullScreenButton.svelte";
   import ShareButton from "./buttons/ShareButton.svelte";
   import TogglePrintable from "./buttons/TogglePrintable.svelte";
+
+  let hasFullscreen = false;
+  onMount(() => {
+    if (document.documentElement.requestFullscreen) {
+      hasFullscreen = true;
+    } else {
+    }
+  });
 </script>
 
 <div class="d-flex h-100 flex-column toolbar">
@@ -30,9 +39,16 @@
   <div class="mb-1"></div>
   <ShareButton />
   <div class="mb-1"></div>
-  <DarkLight roundedClass="rounded-bottom-0" />
 
-  <FullScreenButton roundedClass="rounded-top-0" />
+  {#if hasFullscreen}
+    <DarkLight roundedClass="rounded-bottom-0" />
+    <FullScreenButton roundedClass="rounded-top-0" />
+  {/if}
+
+  {#if !hasFullscreen}
+    <DarkLight />
+  {/if}
+
   <div class="mb-1"></div>
   <User />
 </div>

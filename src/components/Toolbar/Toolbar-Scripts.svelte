@@ -3,10 +3,19 @@
   import DarkLight from "./buttons/DarkLight.svelte";
   import FullScreenButton from "./buttons/FullScreenButton.svelte";
   import fableLogo from "/src/assets/mainlogo.svg";
+  import { onMount } from "svelte";
 
   function handleClick() {
     $_app.scriptsSidebar.show = !$_app.scriptsSidebar.show;
   }
+
+  let hasFullScreen = false;
+  onMount(() => {
+    if (document.documentElement.requestFullscreen) {
+      hasFullScreen = true;
+    } else {
+    }
+  });
 </script>
 
 <div class="d-flex align-items-center toolbar">
@@ -25,7 +34,9 @@
   <a href="/scripts" class="logo-container pe-2">
     <img class="logo" src={fableLogo} alt="Fable" width="60" />
   </a>
-  <div class="mx-1"><FullScreenButton /></div>
+  {#if hasFullScreen}
+    <div class="mx-1"><FullScreenButton /></div>
+  {/if}
   <div><DarkLight /></div>
 </div>
 
