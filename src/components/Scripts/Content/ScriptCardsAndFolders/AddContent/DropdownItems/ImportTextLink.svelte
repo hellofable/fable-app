@@ -55,22 +55,11 @@
             return;
           }
 
-          if (data.template == "none") {
-            // Call the import function
-            const res = await pb.db.scripts.importFromText(
-              data.scriptFile.filename,
-              convertTextToHtmlCardsOnly(data.scriptFile.content)
-            );
-            if (res?.success) _modal.close();
-          }
-
-          if (data.template != "none") {
-            // addSectionsToScriptText({
-            //   scriptText: data.scriptFile.content,
-            //   templateName: data.template,
-            // });
-            _modal.close();
-          }
+          const res = await pb.db.scripts.importFromText(
+            data.scriptFile.filename,
+            convertTextToHtmlCardsOnly(data.scriptFile.content)
+          );
+          if (res?.success) _modal.close();
         },
       },
     });
