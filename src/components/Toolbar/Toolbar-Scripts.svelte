@@ -2,7 +2,7 @@
   import { _app } from "$lib";
   import DarkLight from "./buttons/DarkLight.svelte";
   import FullScreenButton from "./buttons/FullScreenButton.svelte";
-  import fableLogo from "/src/assets/mainlogo.svg";
+
   import { onMount } from "svelte";
 
   function handleClick() {
@@ -32,7 +32,7 @@
   <div class="flex-grow-1"></div>
 
   <a href="/scripts" class="logo-container pe-2">
-    <img class="logo" src={fableLogo} alt="Fable" width="60" />
+    <img class="logo" src="/mainlogo.svg" alt="Fable" width="60" />
   </a>
   {#if hasFullScreen}
     <div class="mx-1"><FullScreenButton /></div>
