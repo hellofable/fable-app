@@ -6,6 +6,7 @@
 
   import { onMount, onDestroy } from "svelte";
   import Editor from "./Editor/Editor.svelte";
+  import ArchivedAlert from "./ArchivedAlert.svelte";
 
   export let script;
 
@@ -23,6 +24,9 @@
     <ToolBar />
     <Sidebar />
     <div id="editor-wrapper">
+      {#if script.deleted}
+        <ArchivedAlert {script} />
+      {/if}
       <Editor {script} />
     </div>
   </div>

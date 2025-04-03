@@ -8,6 +8,10 @@ export async function onEditorStart(editor) {
 	await checkForImport();
 	formatAllCardNodes();
 	createCards();
+
+	// set onOpened flag to true
+	const script = _script.get();
+	if (script?.hasOpened === false) pb.db.scripts.update(script.id, { hasOpened: true });
 }
 
 async function checkForImport() {

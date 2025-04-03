@@ -60,11 +60,9 @@
   }
 
   const script = derived([checkpoint, _scripts], ([$checkpoint, $scripts]) => {
-    if (!$checkpoint || !$scripts) return {};
+    if (!$checkpoint || !$scripts || !Array.isArray($scripts)) return {};
     return $scripts.find((script) => script.id === $checkpoint.scriptId) || {};
   });
-
-  $: console.log($checkpoint);
 </script>
 
 <div

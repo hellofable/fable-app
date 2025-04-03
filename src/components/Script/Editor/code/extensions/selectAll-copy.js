@@ -1,7 +1,5 @@
 import { Extension } from '@tiptap/core';
 import { TextSelection, AllSelection } from 'prosemirror-state';
-import { findParentNode } from 'prosemirror-utils';
-
 
 export const selectAll = Extension.create({
 	name: 'selectAllExtension',
@@ -11,17 +9,26 @@ export const selectAll = Extension.create({
 			'Mod-a': ({ editor }) => {
 				const { state, view } = editor;
 				const { $from } = state.selection;
+				console.log('Attempting Mod-a shortcut');
+
+				// Find the current 'card' node at the cursor position
+				let cardNode = null;
+				let nodePos = null;
+				state.doc.descendants((node, pos) => {
+					console.log(node);
+
+					// Check if the node is a 'card' and contains the current cursor position
+					if (node.type.name === 'card' && pos <= $from.pos && pos + node.nodeSize >= $from.pos) {
+						cardNode = node; // Set the found node to cardNode
+						nodePos = pos;   // Capture the position of the node
+						console.log('Card node found at position:', nodePos);
+						return true;     // Stop traversal if card node is found
+					}
+					return false;
+				});
 
 
-
-				// Define the predicate to find a blockquote node
-				const predicate = node => node.type === state.schema.nodes.card;
-
-				// Use findParentNode with the predicate and the current selection
-				const parent = findParentNode(predicate)(state.selection);
-				const cardNode = parent ? parent.node : null;
-				const nodePos = parent ? parent.pos : null;
-
+				console.log(cardNode);
 
 
 				if (cardNode && nodePos !== null) {
@@ -52,10 +59,12 @@ export const selectAll = Extension.create({
 					return true;
 				}
 
-
-
-				return true
-
+				// // If no card node found, select the entire document
+				// const allSelection = new AllSelection(state.doc);
+				// const tr = state.tr.setSelection(allSelection).setMeta('addToHistory', false);
+				// console.log('No card node found, selecting entire document');
+				// view.dispatch(tr);
+				// return true;
 			}
 		};
 	}
