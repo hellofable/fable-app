@@ -54,8 +54,8 @@ body.page-script {
 body.hide-non-printing {
 
 	.modifier-note,
-	.section,
-	.synopsis,
+	section,
+	synopsis,
 	.fable-note {
 		opacity: 0.1;
 	}
