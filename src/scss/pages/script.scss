@@ -1,9 +1,6 @@
 body.page-script {
 
-
-
 	cardgrid {
-
 		.node-card {
 			position: relative;
 		}
@@ -25,7 +22,6 @@ body.page-script {
 
 
 		gap: 5px;
-
 		display: grid;
 		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 		/* Responsive grid */
@@ -85,8 +81,6 @@ cardgrid>.node-card:first-child:has(.fable-card.collapsed)~.node-card {
 cardgrid>.node-card:first-child:has(.fable-card.collapsed)~cardgrid {
 	display: none;
 }
-
-
 
 
 

@@ -48,7 +48,9 @@ export const Line = Node.create({
 			type: {
 				default: 'action', // Default type if none specified
 				parseHTML: (element) => element.tagName.toLowerCase(),
-				renderHTML: (attributes) => ({ class: attributes.type }) // Assign type class
+				// renderHTML: (attributes) => ({ class: attributes.type }) // Assign type class
+				renderHTML: (attributes) => ({}) // Assign type class
+
 			},
 			id: {
 				default: null
@@ -76,7 +78,9 @@ export const Line = Node.create({
 	renderHTML({ node, HTMLAttributes }) {
 		return [
 			node.attrs.type,
-			mergeAttributes(HTMLAttributes, { class: `line ${node.attrs.type}` }),
+			// mergeAttributes(HTMLAttributes, { class: `line ${node.attrs.type}` }),
+			mergeAttributes(HTMLAttributes, { class: `line` }),
+
 			0
 		];
 	}
