@@ -10,10 +10,11 @@
     event.preventDefault();
 
     _modal.open(MoveFolder, {
-      title: "Move Folder",
+      title: `Move Folder  <span class="text-secondary">${folder.name}</div>`,
+
       buttons: {
         submit: {
-          title: "Move Folder",
+          title: "Move Folder ",
           class: "btn-primary",
           showLabel: false,
           hidden: false,

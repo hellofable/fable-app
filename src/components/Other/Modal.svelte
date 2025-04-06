@@ -15,7 +15,7 @@
               class="d-flex justify-content-between w-100 align-items-center"
             >
               <div class="modal-title fs-5">
-                {$_modal.params.title || "Modal Title"}
+                {@html $_modal.params.title || "Modal Title"}
               </div>
               <div>
                 {#if $_modal.params.titleBadge}

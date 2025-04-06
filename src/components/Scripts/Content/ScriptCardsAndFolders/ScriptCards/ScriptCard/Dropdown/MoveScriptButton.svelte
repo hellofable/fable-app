@@ -10,7 +10,8 @@
     event.preventDefault();
 
     _modal.open(MoveFolder, {
-      title: "Move Script",
+      title: `Move Script  <span class="text-secondary">${folder.title}</div>`,
+
       buttons: {
         submit: {
           title: "Move Script",
