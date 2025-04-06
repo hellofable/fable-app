@@ -80,7 +80,7 @@
 
 <style>
   .node-content.is-section {
-    margin-top: 9px;
+    margin-top: 13px;
   }
 
   .card-dropdown {
