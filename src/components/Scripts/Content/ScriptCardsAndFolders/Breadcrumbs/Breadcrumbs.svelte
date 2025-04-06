@@ -50,7 +50,7 @@
           >
             {#if breadcrumb.id === "root"}
               {#if breadcrumbs && breadcrumbs.length > 1}
-                <a href="/scripts">{breadcrumb.name}</a>
+                <a class="fw-bold" href="/scripts">{breadcrumb.name}</a>
               {/if}
               {#if breadcrumbs && breadcrumbs.length == 1}
                 <div class="fw-bold">{breadcrumb.name}</div>
@@ -74,6 +74,5 @@
   a {
     text-decoration: none;
     opacity: 0.8;
-    font-weight: bold;
   }
 </style>

@@ -59,6 +59,7 @@
                 form="form-component"
                 type="submit"
                 class="btn {$_modal.params.buttons.submit.class} submit-button"
+                class:d-none={$_modal.params.buttons.submit.hidden}
               >
                 {#if $_modal.isSubmitting}
                   <span

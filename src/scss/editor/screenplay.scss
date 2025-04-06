@@ -16,7 +16,12 @@ dia {
 }
 
 .modifier {
-	opacity: 0.5;
+	font-family: Poppins, sans-serif;
+	opacity: 0.3;
+}
+
+section {
+	font-family: Poppins, sans-serif;
 }
 
 .fable-note,
@@ -25,10 +30,12 @@ dia {
 }
 
 .modifier-note {
+	font-family: Poppins, sans-serif;
 	color: rgba(0, 0, 0, 0.115);
 }
 
 synopsis {
+	font-family: Poppins, sans-serif;
 	opacity: 0.7;
 
 }
@@ -41,8 +48,6 @@ body.page-script {
 		font-size: small;
 		font-style: italic;
 	}
-
-
 }
 
 

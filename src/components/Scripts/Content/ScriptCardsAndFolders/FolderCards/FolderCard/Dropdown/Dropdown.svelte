@@ -2,6 +2,7 @@
   import { _app } from "$lib";
   import EditFolderButton from "./EditFolderButton.svelte";
   import TrashFolderButton from "./TrashFolderButton.svelte";
+  import MoveFolderButton from "./MoveFolderButton.svelte";
 
   export let folder;
 </script>
@@ -18,7 +19,8 @@
   <ul class="dropdown-menu rounded-0 border-0 shadow-sm">
     <li><EditFolderButton {folder} /></li>
     <li><TrashFolderButton {folder} /></li>
-    <!-- <li><hr class="dropdown-divider d-none" /></li> -->
+    <li><hr class="dropdown-divider" /></li>
+    <li><MoveFolderButton {folder} /></li>
   </ul>
 </div>
 

@@ -17,7 +17,7 @@
   async function getPlan(email) {
     const result = await Swal.fire({
       title: "Choose Subscription",
-      text: " You won't be billed if you cancel during in the first week.",
+      text: "",
       showCancelButton: false,
       confirmButtonText: "Monthly $9/mo",
       confirmButtonColor: "#2e2f33",
@@ -69,7 +69,7 @@
   }
 </script>
 
-<button on:click={click} class="w-100 btn-sm btn btn-success mt-2">
+<button on:click={click} class="w-100 btn-sm btn btn-warning mt-2">
   {#if isOpeningPortal}
     <span
       class="spinner-border spinner-border-sm"
@@ -85,11 +85,4 @@
   .spinner-border {
     opacity: 0.5;
   }
-  /* 
-	.btn-warning {
-		background: rgba(185, 185, 45, 0.427);
-	}
-	.btn-warning:hover {
-		background: rgba(185, 185, 45, 0.61);
-	} */
 </style>

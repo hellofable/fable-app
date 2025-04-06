@@ -139,7 +139,6 @@ async function subRealtime(user) {
 		await pb.collection('folders').unsubscribe(); // remove all subscriptions in the collection
 		await pb.collection('folders').subscribe('*', async (e) => {
 			const records = await pb.db.folders.get()
-			console.log('folders', records);
 			_folders.set(records);
 		});
 	} catch (error) {
