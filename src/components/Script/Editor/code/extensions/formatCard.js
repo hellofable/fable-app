@@ -2,9 +2,10 @@ import { Plugin } from 'prosemirror-state';
 import { Extension } from '@tiptap/core';
 import { debounce } from '$lib';
 import { formatCardAtPos } from '../formatCard/formatCardNode';
-const doUpdatesDebounced = debounce(doUpdates, 100);
+const doUpdatesDebounced = debounce(doUpdates, 200);
 
 function doUpdates(pos) {
+	console.log("is formatting", isFormatting);
 	formatCardAtPos(pos);
 }
 
@@ -19,6 +20,8 @@ export const formatCard = Extension.create({
 				view(editorView) {
 					return {
 						update: (view, prevState) => {
+
+
 							if (isFormatting) return; // Exit if already formatting
 
 							const { state } = view;
@@ -32,7 +35,7 @@ export const formatCard = Extension.create({
 								doUpdatesDebounced(pos);
 								setTimeout(() => {
 									isFormatting = false;
-								}, 1000); // Match debounce delay
+								}, 200); // Match debounce delay
 							}
 						}
 					};

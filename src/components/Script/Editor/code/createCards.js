@@ -5,7 +5,7 @@ export const createCards = debounce(createCardsDebounced, 500);
 export const createCardsImmediate = createCardsDebounced;
 async function createCardsDebounced() {
 	// return
-	console.log('create cards');
+	// console.log('create cards');
 
 	// Starts a timer for performance tracking; ensure logTimer is properly defined.
 	// logTimer.start('createCards', true);

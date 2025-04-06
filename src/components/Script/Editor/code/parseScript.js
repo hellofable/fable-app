@@ -89,7 +89,7 @@ function debounceCreateNested() {
 	const documentsMatch = compareCardGrids(beforeHtml, afterHtml);
 
 	if (documentsMatch) {
-		console.log('Documents match');
+		// console.log('Documents match');
 		return;
 	}
 
