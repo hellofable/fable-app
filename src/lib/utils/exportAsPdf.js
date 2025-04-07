@@ -40,7 +40,7 @@ export const exportAsPdf = async () => {
 	}
 
 	try {
-		const response = await fetch(PUBLIC_HP, {
+		const response = await fetch(PUBLIC_PDF, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
