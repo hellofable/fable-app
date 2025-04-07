@@ -129,6 +129,8 @@ async function addShare({ scriptId, email }) {
             throw new Error(result.message || 'Failed to share script');
         }
 
+        console.log(result);
+
         return result;
     } catch (error) {
         console.error('Error sharing script:', error.message);
