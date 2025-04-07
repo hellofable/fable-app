@@ -220,12 +220,6 @@ function getNodeById(id) {
 	return foundNode;
 }
 
-window.getNodeById = getNodeById;
-
-
-
-
-
 
 
 
