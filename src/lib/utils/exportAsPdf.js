@@ -1,4 +1,4 @@
-import { PUBLIC_HP } from '$lib/env.js'
+import { PUBLIC_PDF } from '$lib/env.js'
 
 import { textParsers, _editor, _app } from '$lib';
 
