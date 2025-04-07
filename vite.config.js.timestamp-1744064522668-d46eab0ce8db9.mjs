@@ -1,0 +1,22 @@
+// vite.config.js
+import { defineConfig } from "file:///Users/user/Devel/fable-prod/fable-app/node_modules/vite/dist/node/index.js";
+import { svelte } from "file:///Users/user/Devel/fable-prod/fable-app/node_modules/@sveltejs/vite-plugin-svelte/src/index.js";
+import path from "path";
+var __vite_injected_original_dirname = "/Users/user/Devel/fable-prod/fable-app";
+var vite_config_default = defineConfig({
+  plugins: [svelte()],
+  server: {
+    port: 8200,
+    allowedHosts: ["app-dev.hellofable.com", "ai-dev.hellofable.com"]
+  },
+  resolve: {
+    alias: {
+      $lib: path.resolve(__vite_injected_original_dirname, "src/lib")
+      // Ensure this is correct
+    }
+  }
+});
+export {
+  vite_config_default as default
+};
+//# sourceMappingURL=data:application/json;base64,ewogICJ2ZXJzaW9uIjogMywKICAic291cmNlcyI6IFsidml0ZS5jb25maWcuanMiXSwKICAic291cmNlc0NvbnRlbnQiOiBbImNvbnN0IF9fdml0ZV9pbmplY3RlZF9vcmlnaW5hbF9kaXJuYW1lID0gXCIvVXNlcnMvdXNlci9EZXZlbC9mYWJsZS1wcm9kL2ZhYmxlLWFwcFwiO2NvbnN0IF9fdml0ZV9pbmplY3RlZF9vcmlnaW5hbF9maWxlbmFtZSA9IFwiL1VzZXJzL3VzZXIvRGV2ZWwvZmFibGUtcHJvZC9mYWJsZS1hcHAvdml0ZS5jb25maWcuanNcIjtjb25zdCBfX3ZpdGVfaW5qZWN0ZWRfb3JpZ2luYWxfaW1wb3J0X21ldGFfdXJsID0gXCJmaWxlOi8vL1VzZXJzL3VzZXIvRGV2ZWwvZmFibGUtcHJvZC9mYWJsZS1hcHAvdml0ZS5jb25maWcuanNcIjtpbXBvcnQgeyBkZWZpbmVDb25maWcgfSBmcm9tICd2aXRlJztcbmltcG9ydCB7IHN2ZWx0ZSB9IGZyb20gJ0BzdmVsdGVqcy92aXRlLXBsdWdpbi1zdmVsdGUnO1xuaW1wb3J0IHBhdGggZnJvbSAncGF0aCc7XG5cbmV4cG9ydCBkZWZhdWx0IGRlZmluZUNvbmZpZyh7XG4gIHBsdWdpbnM6IFtzdmVsdGUoKV0sXG4gIHNlcnZlcjoge1xuICAgIHBvcnQ6IDgyMDAsXG4gICAgYWxsb3dlZEhvc3RzOiBbJ2FwcC1kZXYuaGVsbG9mYWJsZS5jb20nLCAnYWktZGV2LmhlbGxvZmFibGUuY29tJ10sXG5cbiAgfSxcbiAgcmVzb2x2ZToge1xuICAgIGFsaWFzOiB7XG4gICAgICAkbGliOiBwYXRoLnJlc29sdmUoX19kaXJuYW1lLCAnc3JjL2xpYicpIC8vIEVuc3VyZSB0aGlzIGlzIGNvcnJlY3RcbiAgICB9XG4gIH1cbn0pO1xuIl0sCiAgIm1hcHBpbmdzIjogIjtBQUFvUyxTQUFTLG9CQUFvQjtBQUNqVSxTQUFTLGNBQWM7QUFDdkIsT0FBTyxVQUFVO0FBRmpCLElBQU0sbUNBQW1DO0FBSXpDLElBQU8sc0JBQVEsYUFBYTtBQUFBLEVBQzFCLFNBQVMsQ0FBQyxPQUFPLENBQUM7QUFBQSxFQUNsQixRQUFRO0FBQUEsSUFDTixNQUFNO0FBQUEsSUFDTixjQUFjLENBQUMsMEJBQTBCLHVCQUF1QjtBQUFBLEVBRWxFO0FBQUEsRUFDQSxTQUFTO0FBQUEsSUFDUCxPQUFPO0FBQUEsTUFDTCxNQUFNLEtBQUssUUFBUSxrQ0FBVyxTQUFTO0FBQUE7QUFBQSxJQUN6QztBQUFBLEVBQ0Y7QUFDRixDQUFDOyIsCiAgIm5hbWVzIjogW10KfQo=
