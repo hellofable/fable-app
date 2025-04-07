@@ -1,5 +1,5 @@
 import { _editor, debounce } from '$lib';
-
+import { getCardNodeAtPos } from "./formatCard/getCardNodeAtPos";
 
 export function convertTextToHtmlCardsOnly(scriptText, fromTemplate = false) {
 	const cards = splitTextIntoCards(scriptText);
@@ -74,30 +74,58 @@ export function splitTextIntoCards(scriptText) {
 
 export const createNested = debounce(debounceCreateNested, 1000);
 export const createNestedImmediate = debounceCreateNested;
+
 function debounceCreateNested() {
+	// Get the current editor instance
 	const editor = _editor.get();
 
+	// Get the current selection start position within the editor's state
 	const selection = editor.state.selection.from;
 
-	// get ogranzied JSON
+	// Generate and organize the cards into the desired structure
 	const cards = createCardsArr();
 	const out = organizeCards(cards);
 
+	// Retrieve the current HTML content from the editor before making any changes
 	const beforeHtml = editor.getHTML();
+
+	// Get the newly organized HTML after processing the cards
 	const afterHtml = out.html;
 
+	// Compare the current and new HTML to check if any changes are needed
 	const documentsMatch = compareCardGrids(beforeHtml, afterHtml);
 
-	if (documentsMatch) {
-		// console.log('Documents match');
-		return;
+	// If there's no difference, exit the function as no updates are required
+	if (documentsMatch) return;
+
+	// Destructure the 'from' and 'to' positions of the current selection within the editor's state
+	const { from, to } = editor.state.selection;
+
+	// Retrieve the card node at the current selection position
+	const cardNode = getCardNodeAtPos(selection);
+	const nodeOffsetPos = (from - cardNode.pos);
+	const cardId = cardNode.node.attrs.id;
+
+
+
+	// Update the editor's content with the new organized HTML without merging it with the undo stack
+	editor.commands.setContent(afterHtml, false);
+
+
+	const oldCard = getNodeById(cardId);
+
+	if (!oldCard) {
+		editor.commands.setTextSelection({ from, to: from });
+		return
 	}
 
-	// console.log('create nested');
 
-	const { from, to } = editor.state.selection;
-	editor.commands.setContent(afterHtml, false);
-	editor.commands.setTextSelection({ from, to });
+	const newPos = oldCard.pos + nodeOffsetPos;
+	editor.commands.setTextSelection({ from: newPos, to: newPos });
+
+
+	// Reposition the text cursor to its original position (approximately) in the updated content
+	// editor.commands.setTextSelection({ from, to: from });
 }
 
 
@@ -172,6 +200,40 @@ function compareCardGrids(html1, html2) {
 
 	return JSON.stringify(getGridStructure(doc1)) === JSON.stringify(getGridStructure(doc2));
 }
+
+
+function getNodeById(id) {
+	const editor = _editor.get();
+	let foundNode = null;
+
+	editor.state.doc.descendants((node, pos, parent) => {
+		// Check if the node has the desired ID
+		if (node.attrs && node.attrs.id === id) {
+			foundNode = { node, pos, parent };
+			// Returning false stops the traversal once we found the node
+			return false;
+		}
+		// Continue traversal
+		return true;
+	});
+
+	return foundNode;
+}
+
+window.getNodeById = getNodeById;
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // function replaceEditorContent(newHtml) {
 // 	const editor = _editor.get();
