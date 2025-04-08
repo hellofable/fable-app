@@ -5,6 +5,8 @@
   import OpenCurrent from "./OpenCurrent.svelte";
 
   export let script;
+
+  export let checkpoint, file;
 </script>
 
 <div class="viewer-header p-3 rounded">

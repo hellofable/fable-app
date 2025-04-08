@@ -8,7 +8,7 @@
     return items.reduce((groups, item) => {
       const year = moment(item.created).year();
       const month = moment(item.created).format("MMMM");
-      const day = moment(item.created).format("D MMMM YYYY");
+      const day = moment(item.created).format("MMMM D");
 
       if (!groups[year]) groups[year] = {};
       if (!groups[year][month]) groups[year][month] = {};
@@ -33,16 +33,20 @@
   }
 
   function dateFormat(time) {
-    return moment(time).format("D MMMM YYYY h:mm A");
+    return moment(time).format("h:mm A");
   }
 </script>
 
-{#each Object.keys(groupedItems) as year}
+{#each Object.keys(groupedItems) as year (year)}
+  <!-- svelte-ignore a11y-click-events-have-key-events -->
+  <!-- svelte-ignore a11y-no-static-element-interactions -->
   <div class="collapsible" on:click={() => toggleVisibility(`year-${year}`)}>
     {year}
   </div>
   <div id="year-{year}" class="content">
-    {#each Object.keys(groupedItems[year]) as month}
+    {#each Object.keys(groupedItems[year]) as month (month)}
+      <!-- svelte-ignore a11y-click-events-have-key-events -->
+      <!-- svelte-ignore a11y-no-static-element-interactions -->
       <div
         class="collapsible"
         on:click={() => toggleVisibility(`month-${year}-${month}`)}
@@ -50,7 +54,9 @@
         {month}
       </div>
       <div id="month-{year}-{month}" class="content">
-        {#each Object.keys(groupedItems[year][month]) as day}
+        {#each Object.keys(groupedItems[year][month]) as day (day)}
+          <!-- svelte-ignore a11y-click-events-have-key-events -->
+          <!-- svelte-ignore a11y-no-static-element-interactions -->
           <div
             class="collapsible"
             on:click={() => toggleVisibility(`day-${year}-${month}-${day}`)}

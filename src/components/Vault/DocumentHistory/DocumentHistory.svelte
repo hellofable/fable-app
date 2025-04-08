@@ -4,6 +4,7 @@
   import DeleteButton from "./Buttons/DeleteButton.svelte";
   import CurrentLink from "./CurrentLink.svelte";
   import Items from "./Items.svelte";
+  import { onMount } from "svelte";
 
   export let isCollapsed;
   export let script;
@@ -11,6 +12,8 @@
 
   let items = [];
   let onLastPage = false;
+
+  const batchSize = 500;
 
   $: if (!isCollapsed) {
     getRecent();
@@ -22,16 +25,35 @@
 
   async function getRecent() {
     isLoading = true;
-    const newItems = await pbCheckpoints.getBackups(script.id, currentPage, 5);
+    const newItems = await pbCheckpoints.getBackups(
+      script.id,
+      currentPage,
+      batchSize
+    );
     items = newItems;
     isLoading = false;
+
+    if (newItems.length === batchSize) {
+      onLastPage = false;
+    } else {
+      onLastPage = true;
+    }
   }
 
   let currentPage = 1;
   async function getOlder() {
     isLoading = true;
-    const newItems = await pbCheckpoints.getBackups(script.id, currentPage, 5);
-    const hasMore = await pbCheckpoints.getBackups(script.id, currentPage, 6);
+
+    const newItems = await pbCheckpoints.getBackups(
+      script.id,
+      currentPage,
+      batchSize
+    );
+    const hasMore = await pbCheckpoints.getBackups(
+      script.id,
+      currentPage,
+      batchSize + 1
+    );
 
     if (currentPage === 1) {
       items = newItems;
