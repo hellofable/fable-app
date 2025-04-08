@@ -69,7 +69,7 @@
                 <a
                   href="/scripts?backupId={item.id}"
                   role="button"
-                  class="text-muted">{dateFormat(item.created)}</a
+                  class="text-muted backup-link">{dateFormat(item.created)}</a
                 >
               </div>
             {/each}
@@ -90,5 +90,13 @@
   .content {
     display: none;
     margin-left: 20px;
+  }
+
+  a.backup-link {
+    text-decoration: none;
+  }
+
+  a.backup-link:hover {
+    text-decoration: underline;
   }
 </style>
