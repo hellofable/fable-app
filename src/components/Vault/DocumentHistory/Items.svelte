@@ -97,6 +97,6 @@
   }
 
   a.backup-link:hover {
-    text-decoration: underline;
+    text-decoration: dotted;
   }
 </style>
