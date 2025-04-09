@@ -13,7 +13,7 @@
   let items = [];
   let onLastPage = false;
 
-  const batchSize = 500;
+  const batchSize = 4;
 
   $: if (!isCollapsed) {
     getRecent();
@@ -83,8 +83,9 @@
         class:disabled={onLastPage || items.length === 0}
         class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover small mt-2 opacity-75"
       >
+        <!-- svelte-ignore empty-block -->
         {#if onLastPage}
-          No more backups
+          No More Backups
         {:else if items.length}
           {#if isLoading}
             <span

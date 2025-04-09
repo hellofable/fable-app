@@ -3,7 +3,6 @@
 
   export let items;
 
-  // Helper function to group items by year, month, and day
   function groupItems(items) {
     return items.reduce((groups, item) => {
       const year = moment(item.created).year();
@@ -19,17 +18,18 @@
     }, {});
   }
 
-  let groupedItems = {};
-
-  // Group items when the component is created
   $: groupedItems = groupItems(items);
 
-  function toggleVisibility(id) {
-    const element = document.getElementById(id);
-    if (element) {
-      element.style.display =
-        element.style.display === "block" ? "none" : "block";
-    }
+  // Use Sets to track expanded years/months/days
+  let openYears = new Set();
+  let openMonths = new Set(); // keys like `${year}-${month}`
+  let openDays = new Set(); // keys like `${year}-${month}-${day}`
+
+  function toggle(set, key) {
+    set.has(key) ? set.delete(key) : set.add(key);
+    // Trigger reactivity
+    set = new Set(set);
+    return set;
   }
 
   function dateFormat(time) {
@@ -37,47 +37,68 @@
   }
 </script>
 
-{#each Object.keys(groupedItems) as year (year)}
+{#each Object.keys(groupedItems) as year}
   <!-- svelte-ignore a11y-click-events-have-key-events -->
   <!-- svelte-ignore a11y-no-static-element-interactions -->
-  <div class="collapsible" on:click={() => toggleVisibility(`year-${year}`)}>
+  <div
+    class="collapsible"
+    on:click={() => (openYears = toggle(openYears, year))}
+  >
+    <i
+      class={`bi ${openYears.has(year) ? "bi-caret-down-fill" : "bi-caret-right-fill"}`}
+    ></i>
     {year}
   </div>
-  <div id="year-{year}" class="content">
-    {#each Object.keys(groupedItems[year]) as month (month)}
-      <!-- svelte-ignore a11y-click-events-have-key-events -->
-      <!-- svelte-ignore a11y-no-static-element-interactions -->
-      <div
-        class="collapsible"
-        on:click={() => toggleVisibility(`month-${year}-${month}`)}
-      >
-        {month}
-      </div>
-      <div id="month-{year}-{month}" class="content">
-        {#each Object.keys(groupedItems[year][month]) as day (day)}
-          <!-- svelte-ignore a11y-click-events-have-key-events -->
-          <!-- svelte-ignore a11y-no-static-element-interactions -->
-          <div
-            class="collapsible"
-            on:click={() => toggleVisibility(`day-${year}-${month}-${day}`)}
-          >
-            {day}
-          </div>
-          <div id="day-{year}-{month}-{day}" class="content">
-            {#each groupedItems[year][month][day] as item (item.id)}
-              <div class="backup" id="backup-{item.id}">
-                <a
-                  href="/scripts?backupId={item.id}"
-                  role="button"
-                  class="text-muted backup-link">{dateFormat(item.created)}</a
-                >
+  {#if openYears.has(year)}
+    <div class="content">
+      {#each Object.keys(groupedItems[year]) as month}
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <!-- svelte-ignore a11y-no-static-element-interactions -->
+        <div
+          class="collapsible"
+          on:click={() => (openMonths = toggle(openMonths, `${year}-${month}`))}
+        >
+          <i
+            class={`bi ${openMonths.has(`${year}-${month}`) ? "bi-caret-down-fill" : "bi-caret-right-fill"}`}
+          ></i>
+          {month}
+        </div>
+        {#if openMonths.has(`${year}-${month}`)}
+          <div class="content">
+            {#each Object.keys(groupedItems[year][month]) as day}
+              <!-- svelte-ignore a11y-click-events-have-key-events -->
+              <!-- svelte-ignore a11y-no-static-element-interactions -->
+              <div
+                class="collapsible"
+                on:click={() =>
+                  (openDays = toggle(openDays, `${year}-${month}-${day}`))}
+              >
+                <i
+                  class={`bi ${openDays.has(`${year}-${month}-${day}`) ? "bi-caret-down-fill" : "bi-caret-right-fill"}`}
+                ></i>
+                {day}
               </div>
+              {#if openDays.has(`${year}-${month}-${day}`)}
+                <div class="content">
+                  {#each groupedItems[year][month][day] as item (item.id)}
+                    <div class="backup">
+                      <a
+                        href="/scripts?backupId={item.id}"
+                        role="button"
+                        class="text-muted backup-link"
+                      >
+                        {dateFormat(item.created)}
+                      </a>
+                    </div>
+                  {/each}
+                </div>
+              {/if}
             {/each}
           </div>
-        {/each}
-      </div>
-    {/each}
-  </div>
+        {/if}
+      {/each}
+    </div>
+  {/if}
 {/each}
 
 <style>
@@ -88,7 +109,6 @@
   }
 
   .content {
-    display: none;
     margin-left: 20px;
   }
 
@@ -97,6 +117,6 @@
   }
 
   a.backup-link:hover {
-    text-decoration: dotted;
+    border-bottom: 1px dotted;
   }
 </style>
