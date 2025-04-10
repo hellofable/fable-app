@@ -5,10 +5,7 @@
   async function loginWithGoogle() {
     const authData = await pb
       .collection("users")
-      .authWithOAuth2({
-        provider: "google",
-        params: { prompt: "select_account" },
-      });
+      .authWithOAuth2({ provider: "google" });
     pb.auth.getUser();
   }
 </script>
