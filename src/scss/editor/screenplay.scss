@@ -41,10 +41,9 @@ synopsis {
 }
 
 body.page-script {
-	synopsis::before {
-		content: 'synopsis ';
-		font-weight: bold;
-		opacity: 0.3;
+	synopsis::after {
+		content: '  (synopsis) ';
+		opacity: 0.2;
 		font-size: small;
 		font-style: italic;
 	}
