@@ -65,21 +65,22 @@
   });
 </script>
 
+xx
 <div
   class:d-none={!$_route.query.backupId}
   class="viewer shadow d-flex flex-column scroller"
 >
   <Loading />
 
-  {#if $checkpoint?.collectionName == "checkpoints"}
+  {#if $checkpoint?.collectionName == "checkpoints" && !$_app.isLoadingBackup}
     <CheckpointHeader {checkpoint} {script} {file} />
   {/if}
 
-  {#if $checkpoint?.collectionName != "checkpoints"}
+  {#if $checkpoint?.collectionName != "checkpoints" && !$_app.isLoadingBackup}
     <CurrentHeader {checkpoint} {script} {file} />
   {/if}
 
-  {#if file && $script.id}
+  {#if file && $script.id && !$_app.isLoadingBackup}
     <Editor json={file} {script} />
   {/if}
 </div>

@@ -3,6 +3,8 @@
   import { Editor } from "@tiptap/core";
   import StarterKit from "./code/starterKit/starterKit";
   import { schema } from "./code/schema";
+  import { notesDecorations } from "../../../Script/Editor/code/extensions/notesDecorations";
+  import { addModifierClass } from "../../../Script/Editor/code/extensions/addModifierClass";
 
   import { _editor, _script } from "$lib";
 
@@ -11,7 +13,7 @@
   export let script;
 
   onMount(async () => {
-    const extns = [StarterKit, ...schema];
+    const extns = [StarterKit, ...schema, notesDecorations, addModifierClass];
 
     // Initialize the Tiptap editor
     editor = new Editor({
