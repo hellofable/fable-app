@@ -32,6 +32,9 @@ const settings = {
 				hideDayNight: false,
 				characters: true
 			}
+		},
+		cardInfo: {
+			show: false
 		}
 	},
 	view: {

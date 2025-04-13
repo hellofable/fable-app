@@ -37,6 +37,10 @@ async function createCardsDebounced() {
 			const isSection = textContent.startsWith('#');
 			const lines = createLinesFromNode(node.node);
 			const pageCount = calculatePage(lines);
+			const firstLine = {
+				textContent: lines[0].textContent,
+				textContentNoMarkup: lines[0].textContent.replace(/^#+/, "")
+			}
 
 			let prevRunningCount = runningPageCount;
 			runningPageCount += pageCount;
@@ -93,6 +97,7 @@ async function createCardsDebounced() {
 				index,
 				pages,
 				textContent,
+				firstLine,
 				selected: false,
 				depth: isSection
 					? sectionDepth

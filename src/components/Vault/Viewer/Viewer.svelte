@@ -65,7 +65,6 @@
   });
 </script>
 
-xx
 <div
   class:d-none={!$_route.query.backupId}
   class="viewer shadow d-flex flex-column scroller"
