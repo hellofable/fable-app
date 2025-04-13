@@ -18,7 +18,6 @@ function scrollToCard(element, behavior = 'smooth') {
 	const containerElement = document.getElementById('editor-wrapper');
 
 	if (element && containerElement) {
-		console.log('found');
 
 		const offset = 100;
 		const elementTop = element.getBoundingClientRect().top;

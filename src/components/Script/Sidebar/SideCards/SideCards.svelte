@@ -4,7 +4,7 @@
 
   let moveTop = "30px";
   $: if ($_app.sidebar.cardInfo.show) {
-    moveTop = "100px";
+    moveTop = "145px";
   } else {
     moveTop = "30px";
   }

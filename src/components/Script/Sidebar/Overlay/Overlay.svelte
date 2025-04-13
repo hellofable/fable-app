@@ -19,7 +19,7 @@
   #overlay {
     position: fixed;
 
-    background-color: white;
+    background-color: var(--bs-body-bg);
     width: 335px;
     margin-left: 5px;
     z-index: 1000;
