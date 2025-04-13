@@ -5,7 +5,21 @@
     return Math.round(num * 4) / 4;
   }
 
-  $: console.log(card);
+  let numberOfPages = 0;
+  let startPage = 0;
+  let endPage = 0;
+
+  $: startPage = roundToNearestQuarter(card.pages.prevRunningCount);
+  $: endPage = getEndPage(card);
+
+  function getEndPage(card) {
+    const descendants = card.dependencyInfo.descendants;
+    const lastDescendant = descendants[descendants.length - 1];
+
+    return roundToNearestQuarter(lastDescendant.pages.runningCount);
+  }
+
+  $: numberOfPages = endPage - startPage;
 </script>
 
 {#if card}
@@ -15,7 +29,7 @@
     >
       Number of Pages
       <span class="badge bg-primary rounded-pill border-0">
-        {roundToNearestQuarter(card.pages.count)}
+        {numberOfPages}
       </span>
     </li>
     <li
@@ -23,7 +37,7 @@
     >
       Starts On Page
       <span class="badge bg-success rounded-pill border-0">
-        {roundToNearestQuarter(card.pages.prevRunningCount)}
+        {startPage}
       </span>
     </li>
     <li
@@ -31,7 +45,7 @@
     >
       Ends On Page
       <span class="badge bg-danger rounded-pill border-0">
-        {roundToNearestQuarter(card.pages.runningCount)}
+        {endPage}
       </span>
     </li>
   </ul>

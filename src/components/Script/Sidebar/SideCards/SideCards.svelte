@@ -2,11 +2,11 @@
   import { _cards, _app } from "$lib";
   import SideCard from "./SideCard/SideCard.svelte";
 
-  let moveTop = "30px";
-  $: if ($_app.sidebar.cardInfo.show) {
-    moveTop = "145px";
+  let moveTop = "15px";
+  $: if ($_app.sidebar?.cardInfo?.show) {
+    moveTop = "130px";
   } else {
-    moveTop = "30px";
+    moveTop = "15px";
   }
 </script>
 

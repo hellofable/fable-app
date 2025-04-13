@@ -38,7 +38,7 @@
     class="sidecard-inner rounded flex-grow-1 p-2"
   >
     <div class="title ps-2">
-      <CardText lineText={card.firstLine.textContent} />
+      <CardText lineText={card?.firstLine?.textContent} />
     </div>
   </div>
 </div>

@@ -15,8 +15,7 @@ export function establishCardsHierarchy() {
 			parentIds: [],
 			parentCardDepth: null,
 			hasCollapsedParent: false,
-			numberOfChildren: 0,
-			descendants: [] // Initialize as an empty array
+			numberOfChildren: 0
 		}
 	}));
 
@@ -74,17 +73,13 @@ export function establishCardsHierarchy() {
 		}
 	});
 
-	// Second pass: count all descendants and gather their full card objects
+	// Second pass: count all descendants
 	updatedCards.forEach((card) => {
 		if (card.dependencyInfo.parentIds.length > 0) {
 			card.dependencyInfo.parentIds.forEach((parentId) => {
 				const parentIndex = updatedCards.findIndex((c) => c.id === parentId);
 				if (parentIndex !== -1) {
-					const parentCard = updatedCards[parentIndex];
-					parentCard.dependencyInfo.numberOfChildren++;
-
-					// Add this entire card object to the parent's descendants
-					parentCard.dependencyInfo.descendants.push(card);
+					updatedCards[parentIndex].dependencyInfo.numberOfChildren++;
 				}
 			});
 		}
@@ -94,3 +89,5 @@ export function establishCardsHierarchy() {
 
 	logTimer.stop();
 }
+
+// window.establishCardsHierarchy = establishCardsHierarchy;

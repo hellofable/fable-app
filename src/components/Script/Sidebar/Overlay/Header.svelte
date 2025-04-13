@@ -3,8 +3,10 @@
 </script>
 
 {#if card}
-  <div class="w-100 p-2">
-    <div class="title fw-bold">{card.firstLine.textContentNoMarkup}</div>
+  <div class="w-100">
+    <div class="title fw-bold px-2 pt-1">
+      {card.firstLine.textContentNoMarkup}
+    </div>
   </div>
 {/if}
 

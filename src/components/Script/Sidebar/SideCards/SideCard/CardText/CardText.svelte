@@ -4,7 +4,7 @@
   import { onMount } from "svelte";
   let paresedText = "";
 
-  $: if (lineText.startsWith("#")) {
+  $: if (lineText && lineText.startsWith("#")) {
     paresedText = "";
     lineText = lineText.replace(/^#+/, ""); // This line strips leading #s
 
