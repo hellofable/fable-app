@@ -172,11 +172,22 @@ function createLinesFromNode(node) {
 	return out;
 }
 
+
 function calculatePage(linesArray) {
+
 	let totalLines = 0;
 
+	let prevLine = null;
 	linesArray.forEach((line) => {
+
+
+
 		let lineCount = 0;
+
+		if (containsOnlyNoteTags(line.textContent)) {
+			return 0
+		}
+
 
 		if (line.type === 'action') {
 			const content = line.textContent.trim();
@@ -194,11 +205,21 @@ function calculatePage(linesArray) {
 			lineCount = 1;
 			totalLines += lineCount;
 		}
+
+		prevLine = line
 	});
 
 	const pageCount = totalLines / 55;
+
+
 	return parseFloat(pageCount.toFixed(2));
 }
+
+function containsOnlyNoteTags(str) {
+	const noteTagPattern = /^\s*(\[\[[^\[\]]+\]\]\s*)+$/;
+	return noteTagPattern.test(str);
+}
+
 
 export function processScreenplayLines(lines) {
 	let prevLineText = null;

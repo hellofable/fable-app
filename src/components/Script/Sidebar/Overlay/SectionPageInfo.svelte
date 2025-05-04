@@ -35,6 +35,10 @@
   }
 
   $: numberOfPages = endPage - startPage;
+
+  $: if (numberOfPages < 0) {
+    numberOfPages = 0;
+  }
 </script>
 
 {#if card}

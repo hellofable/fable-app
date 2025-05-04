@@ -13,10 +13,10 @@
     <div class="p-1 mb-2">
       <Header {card} />
 
-      {#if !card.section.isSection}
+      {#if card?.section?.isSection === false}
         <PageInfo {card} />
       {/if}
-      {#if card.section.isSection}
+      {#if card?.section?.isSection}
         <SectionPageInfo {card} />
       {/if}
     </div>
