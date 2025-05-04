@@ -27,6 +27,18 @@ async function createCardsDebounced() {
 	let sectionCardCounters = {}; // Keeps track of card count in each section
 	let orphanCardCounter = 1; // Counter for cards not inside a section
 
+
+	function cleanText(inputText) {
+		// Remove leading hash symbols using a regular expression
+		let cleanedText = inputText.replace(/^#+/, "");
+
+		// Replace [[ or ]] with an empty string
+		cleanedText = cleanedText.replace(/\[\[|\]\]/g, "");
+
+		return cleanedText;
+	}
+
+
 	const processChunk = async (start, end) => {
 		for (let i = start; i < end; i++) {
 			const node = nodes[i];
@@ -39,7 +51,7 @@ async function createCardsDebounced() {
 			const pageCount = calculatePage(lines);
 			const firstLine = {
 				textContent: lines[0].textContent,
-				textContentNoMarkup: lines[0].textContent.replace(/^#+/, "")
+				textContentNoMarkup: cleanText(lines[0].textContent)
 			}
 
 			let prevRunningCount = runningPageCount;

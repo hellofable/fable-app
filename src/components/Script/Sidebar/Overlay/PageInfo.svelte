@@ -5,7 +5,10 @@
     return Math.round(num * 4) / 4;
   }
 
-  $: console.log(card);
+  let numberOfPages = 0;
+  $: if (card) {
+    numberOfPages = roundToNearestQuarter(card.pages.count);
+  }
 </script>
 
 {#if card}
@@ -15,7 +18,11 @@
     >
       Number of Pages
       <span class="badge bg-primary rounded-pill border-0">
-        {roundToNearestQuarter(card.pages.count)}
+        {#if numberOfPages > 0}
+          {numberOfPages}
+        {:else}
+          > 0.25
+        {/if}
       </span>
     </li>
     <li
@@ -23,7 +30,7 @@
     >
       Starts On Page
       <span class="badge bg-success rounded-pill border-0">
-        {roundToNearestQuarter(card.pages.prevRunningCount)}
+        {Math.floor(card.pages.prevRunningCount) + 1}
       </span>
     </li>
     <li
@@ -31,7 +38,7 @@
     >
       Ends On Page
       <span class="badge bg-danger rounded-pill border-0">
-        {roundToNearestQuarter(card.pages.runningCount)}
+        {Math.floor(card.pages.runningCount) + 1}
       </span>
     </li>
   </ul>

@@ -9,12 +9,27 @@
   let startPage = 0;
   let endPage = 0;
 
-  $: startPage = roundToNearestQuarter(card.pages.prevRunningCount);
-  $: endPage = getEndPage(card);
+  // Defensive check for card and its pages property
+  $: startPage =
+    card && card.pages ? roundToNearestQuarter(card.pages.prevRunningCount) : 0;
+  $: endPage = card ? getEndPage(card) : 0;
 
   function getEndPage(card) {
+    if (
+      !card.dependencyInfo ||
+      !card.dependencyInfo.descendants ||
+      card.dependencyInfo.descendants.length === 0
+    ) {
+      return 0;
+    }
+
     const descendants = card.dependencyInfo.descendants;
     const lastDescendant = descendants[descendants.length - 1];
+
+    // Defensive check for lastDescendant and its pages property
+    if (!lastDescendant || !lastDescendant.pages) {
+      return 0;
+    }
 
     return roundToNearestQuarter(lastDescendant.pages.runningCount);
   }
@@ -37,7 +52,7 @@
     >
       Starts On Page
       <span class="badge bg-success rounded-pill border-0">
-        {startPage}
+        {Math.floor(startPage + 1)}
       </span>
     </li>
     <li
@@ -45,7 +60,7 @@
     >
       Ends On Page
       <span class="badge bg-danger rounded-pill border-0">
-        {endPage}
+        {Math.floor(endPage + 1)}
       </span>
     </li>
   </ul>
