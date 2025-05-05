@@ -21,7 +21,7 @@
         {#if numberOfPages > 0}
           {numberOfPages}
         {:else}
-          > 0.25
+          &lt; 0.25
         {/if}
       </span>
     </li>

@@ -1,16 +1,20 @@
-
-
 export function insertCard() {
 	const json = {
 		type: 'card',
-		content: [{ type: 'line', text: 'some text' }]
+		content: [{ type: 'line', text: '' }]
 	};
 
-	// Parse the JSON into a ProseMirror node
 	const nodeToInsert = editor.schema.nodeFromJSON(json);
 
-	// Insert the parsed node
-	editor.view.dispatch(editor.view.state.tr.insert(0, nodeToInsert));
+	// Working with ProseMirror transactions directly
+	const transaction = editor.state.tr.insert(0, nodeToInsert);
+
+	// The key is to use the correct metadata key
+	transaction.setMeta('addToHistory', false);
+	// Or alternatively in TipTap's case:
+	transaction.setMeta('preventHistory', true);
+
+	editor.view.dispatch(transaction);
 }
 
 window.insertCard = insertCard;
